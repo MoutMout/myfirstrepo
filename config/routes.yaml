@@ -1,0 +1,8 @@
+blocs:
+    type:     rest
+    resource: App\Controller\BlocController
+
+token:
+    type:     rest
+    resource: App\Controller\TokenController
+

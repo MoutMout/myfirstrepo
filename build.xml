@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="promote-api" default="full-build">
+    <property name="console" value="./bin/console"/>
+    <property name="pdepend" value="./vendor/bin/pdepend"/>
+    <property name="phpcpd"  value="./vendor/bin/phpcpd"/>
+    <property name="phpcs"   value="./vendor/bin/phpcs"/>
+    <property name="phpdox"  value="./vendor/bin/phpdox"/>
+    <property name="phploc"  value="./vendor/bin/phploc"/>
+    <property name="phpmd"   value="./vendor/bin/phpmd"/>
+    <property name="phpunit" value="./vendor/bin/phpunit"/>
+    <property name="phpstan" value="./vendor/bin/phpstan"/>
+    <property name="behat"   value="./vendor/bin/behat"/>
+    <property name="dredd"   value="./node_modules/.bin/dredd"/>
+
+    <target name="install"
+            depends="composer,nvm,npm"
+            description="Prepare for build or tests" />
+
+    <target name="prepare"
+            depends="drop-schema,migrate,fixture"
+            description="Prepare for build or tests" />
+
+    <target name="analysis"
+            depends="lint,phpmd,phpcs,phploc,phpstan"
+            description="Performs code analysis" />
+
+    <target name="test"
+            depends="prepare,behat,dredd"
+            description="Performs a lint check and runs the tests (without generating code coverage reports)" />
+
+    <target name="static-analysis"
+            depends="clean,build-ci-dir,lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci,phpstan-ci"
+            description="Performs static analysis" />
+
+    <target name="full-build"
+            depends="install,prepare,static-analysis,test,phpdox"
+            description="Install dependencies, prepare data, performs static analysis, runs the tests, and generates project documentation"/>
+
+    <target name="build-ci-dir"
+            unless="build-ci-dir.done"
+            description="Prepare build artifacts">
+        <mkdir dir="./build/api"/>
+        <mkdir dir="./build/coverage"/>
+        <mkdir dir="./build/logs"/>
+        <mkdir dir="./build/pdepend"/>
+        <mkdir dir="./build/phpdox"/>
+        <mkdir dir="./build/phpstan"/>
+        <property name="build-ci-dir.done" value="true"/>
+    </target>
+
+    <target name="clean"
+            unless="clean.done"
+            description="Cleanup build artifacts">
+        <delete dir="./build/api"/>
+        <delete dir="./build/coverage"/>
+        <delete dir="./build/logs"/>
+        <delete dir="./build/pdepend"/>
+        <delete dir="./build/phpdox"/>
+        <delete dir="./build/phpstan"/>
+        <property name="clean.done" value="true"/>
+    </target>
+
+    <target name="composer"
+            unless="composer.done"
+            description="Install Composer Vendors">
+        <exec executable="composer">
+            <arg value="install" />
+            <arg value="--optimize-autoloader" />
+        </exec>
+        <property name="composer.done" value="true"/>
+    </target>
+
+    <target name="nvm"
+            unless="nvm.done"
+            description="Use the proper version of npm">
+        <exec executable="nvm">
+            <arg value="use" />
+        </exec>
+        <property name="nvm.done" value="true"/>
+    </target>
+
+    <target name="npm"
+            unless="npm.done"
+            description="Install Nodejs Vendors">
+        <exec executable="npm">
+            <arg value="install" />
+        </exec>
+        <property name="npm.done" value="true"/>
+    </target>
+
+    <target name="drop-schema"
+            unless="drop-schema.done"
+            description="Drop Database schema">
+        <exec executable="${console}" checkreturn="true" passthru="true">
+            <arg value="doctrine:schema:drop" />
+            <arg value="--no-interaction" />
+            <arg value="--force" />
+            <arg value="--full-database" />
+            <arg value="--ansi" />
+        </exec>
+        <property name="drop-schema.done" value="true"/>
+    </target>
+
+    <target name="migrate"
+            unless="migrate.done"
+            description="Migrate Database schema">
+        <exec executable="${console}" checkreturn="true" passthru="true">
+            <arg value="doctrine:migrations:migrate" />
+            <arg value="--no-interaction" />
+            <arg value="--ansi" />
+        </exec>
+        <property name="migrate.done" value="true"/>
+    </target>
+
+    <target name="fixture"
+            unless="fixture.done"
+            description="Load doctrine fixtures">
+        <exec executable="${console}" checkreturn="true" passthru="true">
+            <arg value="doctrine:fixtures:load" />
+            <arg value="--no-interaction" />
+            <arg value="--ansi" />
+        </exec>
+        <property name="fixture.done" value="true"/>
+    </target>
+
+    <target name="lint"
+            unless="lint.done"
+            description="Perform syntax check of sourcecode files">
+        <apply executable="php" passthru="true">
+            <arg value="-l" />
+
+            <fileset dir="./src">
+                <include name="**/*.php" />
+            </fileset>
+
+            <fileset dir="./tests">
+                <include name="**/*.php" />
+            </fileset>
+        </apply>
+
+        <property name="lint.done" value="true"/>
+    </target>
+
+    <target name="phpstan"
+            unless="phpstan.done"
+            description="Perform a STatic ANalysis on src">
+        <exec executable="${phpstan}">
+            <arg path="analyse" />
+            <arg path="src" />
+        </exec>
+        <property name="phpstan.done" value="true"/>
+    </target>
+
+    <target name="phpstan-ci"
+            unless="phpstan-ci.done"
+            description="Perform a STatic ANalysis on src and keep the logs in xml">
+        <exec command="${phpstan} analyse src --errorFormat=checkstyle --no-progress --no-ansi > ./build/phpstan/phpstan.xml" />
+        <property name="phpstan-ci.done" value="true"/>
+    </target>
+
+    <target name="phploc"
+            unless="phploc.done"
+            description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
+        <exec executable="${phploc}">
+            <arg value="--count-tests" />
+            <arg path="./src" />
+            <arg path="./tests" />
+        </exec>
+
+        <property name="phploc.done" value="true"/>
+    </target>
+
+    <target name="phploc-ci"
+            unless="phploc.done"
+            depends="prepare"
+            description="Measure project size using PHPLOC and log result in CSV and XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${phploc}">
+            <arg value="--count-tests" />
+            <arg value="--log-csv" />
+            <arg path="./build/logs/phploc.csv" />
+            <arg value="--log-xml" />
+            <arg path="./build/logs/phploc.xml" />
+            <arg path="./src" />
+            <arg path="./tests" />
+        </exec>
+
+        <property name="phploc.done" value="true"/>
+    </target>
+
+    <target name="pdepend"
+            unless="pdepend.done"
+            depends="prepare"
+            description="Calculate software metrics using PHP_Depend and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${pdepend}">
+            <arg value="--jdepend-xml=./build/logs/jdepend.xml" />
+            <arg value="--jdepend-chart=./build/pdepend/dependencies.svg" />
+            <arg value="--overview-pyramid=./build/pdepend/overview-pyramid.svg" />
+            <arg path="./src" />
+        </exec>
+
+        <property name="pdepend.done" value="true"/>
+    </target>
+
+    <target name="phpmd"
+            unless="phpmd.done"
+            description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpmd}">
+            <arg path="./src" />
+            <arg value="text" />
+            <arg path="./build/phpmd.xml" />
+        </exec>
+
+        <property name="phpmd.done" value="true"/>
+    </target>
+
+    <target name="phpmd-ci"
+            unless="phpmd.done"
+            depends="prepare"
+            description="Perform project mess detection using PHPMD and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${phpmd}">
+            <arg path="./src" />
+            <arg value="xml" />
+            <arg path="./build/phpmd.xml" />
+            <arg value="--reportfile" />
+            <arg path="./build/logs/pmd.xml" />
+        </exec>
+
+        <property name="phpmd.done" value="true"/>
+    </target>
+
+    <target name="phpcs"
+            unless="phpcs.done"
+            description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpcs}" passthru="true" checkreturn="true">
+            <arg value="--standard=./vendor/escapestudios/symfony2-coding-standard/Symfony/ruleset.xml" />
+            <arg value="--extensions=php" />
+            <arg value="--ignore=autoload.php" />
+            <arg path="./src" />
+            <arg path="./tests" />
+        </exec>
+
+        <property name="phpcs.done" value="true"/>
+    </target>
+
+    <target name="phpcs-ci"
+            unless="phpcs.done"
+            depends="prepare"
+            description="Find coding standard violations using PHP_CodeSniffer and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${phpcs}" output="/dev/null">
+            <arg value="--report=checkstyle" />
+            <arg value="--report-file=./build/logs/checkstyle.xml" />
+            <arg value="--standard=PSR2" />
+            <arg value="--extensions=php" />
+            <arg value="--ignore=autoload.php" />
+            <arg path="./src" />
+            <arg path="./tests" />
+        </exec>
+
+        <property name="phpcs.done" value="true"/>
+    </target>
+
+    <target name="phpcpd"
+            unless="phpcpd.done"
+            description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpcpd}" passthru="true">
+            <arg path="./src" />
+        </exec>
+
+        <property name="phpcpd.done" value="true"/>
+    </target>
+
+    <target name="phpcpd-ci"
+            unless="phpcpd.done"
+            depends="prepare"
+            description="Find duplicate code using PHPCPD and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${phpcpd}" >
+            <arg value="--log-pmd" />
+            <arg path="./build/logs/pmd-cpd.xml" />
+            <arg path="./src" />
+        </exec>
+
+        <property name="phpcpd.done" value="true"/>
+    </target>
+
+    <target name="phpdox"
+            unless="phpdox.done"
+            depends="phploc-ci,phpcs-ci,phpmd-ci"
+            description="Generate project documentation using phpDox">
+        <exec executable="${phpdox}" dir="./build"/>
+
+        <property name="phpdox.done" value="true"/>
+    </target>
+
+    <target name="phpunit"
+            unless="phpunit.done"
+            depends="prepare"
+            description="Run unit tests with PHPUnit">
+        <exec executable="${phpunit}" checkreturn="true" passthru="true">
+            <arg value="--coverage-html"/>
+            <arg value="./build/coverage"/>
+            <arg value="--coverage-clover"/>
+            <arg value="./build/logs/clover.xml"/>
+            <arg value="--coverage-xml"/>
+            <arg value="./build/logs/junit.xml"/>
+        </exec>
+
+        <property name="phpunit.done" value="true"/>
+    </target>
+
+    <target name="phpunit-no-coverage"
+            unless="phpunit.done"
+            depends="prepare"
+            description="Run unit tests with PHPUnit (without generating code coverage reports)">
+        <exec executable="${phpunit}" checkreturn="true" passthru="true"/>
+        <property name="phpunit.done" value="true"/>
+    </target>
+
+    <target name="dredd"
+            unless="dredd.done"
+            depends="prepare"
+            description="Run functional tests with Dredd">
+        <exec executable="${dredd}" checkreturn="true" passthru="true">
+            <arg value="--sorted"/>
+        </exec>
+
+        <property name="dredd.done" value="true"/>
+    </target>
+
+    <target name="behat"
+            unless="behat.done"
+            depends="prepare"
+            description="Run end-to-end tests with Behat">
+        <exec executable="${behat}" checkreturn="true" passthru="true"/>
+        <property name="behat.done" value="true"/>
+    </target>
+</project>
