@@ -2,14 +2,14 @@
 
 namespace spec\App\Entity;
 
-use App\Entity\Bloc;
+use App\Entity\Block;
 use PhpSpec\ObjectBehavior;
 
 class BlocSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(Bloc::class);
+        $this->shouldHaveType(Block::class);
     }
     function it_has_an_id_setter()
     {

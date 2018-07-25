@@ -11,7 +11,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Bloc;
+use App\Entity\Block;
 use App\Entity\Label;
 use App\Form\Type\LabelType;
 use Doctrine\Common\Persistence\ObjectRepository;
@@ -29,7 +29,7 @@ use Swagger\Annotations as SWG;
  * Class LabelController
  * @author Romain Richard
  */
-class BlocController extends Controller
+class BlockController extends Controller
 {
     use ControllerTrait;
 
@@ -38,29 +38,29 @@ class BlocController extends Controller
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Paginated bloc collection",
-     *     @SWG\Items(@Model(type=Bloc::class))
+     *     description="Paginated block collection",
+     *     @SWG\Items(@Model(type=Block::class))
      * )
      *
      * @return PaginatedRepresentation
      */
-    public function getBlocsAction()
+    public function getBlocksAction()
     {
-        return $this->get('bigz_halapi.pagination_factory')->getRepresentation(Bloc::class);
+        return $this->get('bigz_halapi.pagination_factory')->getRepresentation(Block::class);
     }
 
     /**
-     * Get a Bloc.
+     * Get a Block.
      *
-     * @SWG\Response(response=200, description="Get a bloc", @Model(type=Bloc::class))
-     * @SWG\Response(response=404, description="Bloc not found")
+     * @SWG\Response(response=200, description="Get a block", @Model(type=Block::class))
+     * @SWG\Response(response=404, description="Block not found")
      *
-     * @param Bloc $bloc
+     * @param Block $block
      *
-     * @return Bloc
+     * @return Block
      */
-    public function getBlocAction(Bloc $bloc)
+    public function getBlockAction(Block $block)
     {
-        return $bloc;
+        return $block;
     }
 }

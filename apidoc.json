@@ -12,27 +12,27 @@
         "application/json"
     ],
     "paths": {
-        "/blocs": {
+        "/blocks": {
             "get": {
                 "summary": "Get all blocs.",
                 "responses": {
                     "200": {
-                        "description": "Paginated bloc collection",
+                        "description": "Paginated block collection",
                         "schema": {
                             "items": {
-                                "$ref": "#/definitions/Bloc"
+                                "$ref": "#/definitions/Block"
                             }
                         }
                     }
                 }
             }
         },
-        "/blocs/{bloc}": {
+        "/blocks/{block}": {
             "get": {
-                "summary": "Get a Bloc.",
+                "summary": "Get a Block.",
                 "parameters": [
                     {
-                        "name": "bloc",
+                        "name": "block",
                         "in": "path",
                         "required": true,
                         "type": "string",
@@ -41,13 +41,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get a bloc",
+                        "description": "Get a block",
                         "schema": {
-                            "$ref": "#/definitions/Bloc"
+                            "$ref": "#/definitions/Block"
                         }
                     },
                     "404": {
-                        "description": "Bloc not found"
+                        "description": "Block not found"
                     }
                 }
             }
@@ -95,7 +95,7 @@
         }
     },
     "definitions": {
-        "Bloc": {
+        "Block": {
             "required": [
                 "body"
             ],

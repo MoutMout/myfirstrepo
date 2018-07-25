@@ -1,6 +1,6 @@
-blocs:
+blocks:
     type:     rest
-    resource: App\Controller\BlocController
+    resource: App\Controller\BlockController
 
 token:
     type:     rest

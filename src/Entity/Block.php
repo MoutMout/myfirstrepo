@@ -9,14 +9,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * Class Bloc
+ * Class Block
  *
  * @ORM\Table(name="bloc")
  * @ORM\Entity(repositoryClass="App\Repository\BlocRepository")
  *
  * @ExclusionPolicy("all")
  */
-class Bloc
+class Block
 {
     /**
      * @var int

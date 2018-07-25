@@ -11,7 +11,7 @@
 
 namespace App\DataFixtures\ORM;
 
-use App\Entity\Bloc;
+use App\Entity\Block;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -28,7 +28,7 @@ class LoadBlocData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         foreach ($this->getBlocs() as $data) {
-            $label = new Bloc();
+            $label = new Block();
             $label->setBody($data['body']);
 
             $manager->persist($label);
