@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Promote Api",
-        "description": "Handsome API to work with an artist roster",
+        "title": "Content API",
+        "description": "Handsome API to work with blocks",
         "version": "1.0.0"
     },
     "consumes": [
