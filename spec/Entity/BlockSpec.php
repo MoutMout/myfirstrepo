@@ -5,7 +5,7 @@ namespace spec\App\Entity;
 use App\Entity\Block;
 use PhpSpec\ObjectBehavior;
 
-class BlocSpec extends ObjectBehavior
+class BlockSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
