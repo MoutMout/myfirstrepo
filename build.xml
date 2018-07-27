@@ -11,6 +11,7 @@
     <property name="phpstan" value="./vendor/bin/phpstan"/>
     <property name="behat"   value="./vendor/bin/behat"/>
     <property name="dredd"   value="./node_modules/.bin/dredd"/>
+    <property name="phpspec" value="./vendor/bin/phpspec"/>
 
     <target name="install"
             depends="composer,nvm,npm"
@@ -25,7 +26,7 @@
             description="Performs code analysis" />
 
     <target name="test"
-            depends="prepare,behat,dredd"
+            depends="prepare,phpspec,behat,dredd"
             description="Performs a lint check and runs the tests (without generating code coverage reports)" />
 
     <target name="static-analysis"
@@ -332,5 +333,15 @@
             description="Run end-to-end tests with Behat">
         <exec executable="${behat}" checkreturn="true" passthru="true"/>
         <property name="behat.done" value="true"/>
+    </target>
+
+    <target name="phpspec"
+            unless="phpspec.done"
+            depends="prepare"
+            description="Run spec tests with PHPSpec">
+        <exec executable="${phpspec}" checkreturn="true" passthru="true">
+            <arg value="run"/>
+        </exec>
+        <property name="phpspec.done" value="true"/>
     </target>
 </project>
