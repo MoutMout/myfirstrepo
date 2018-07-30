@@ -1,8 +1,8 @@
 nelmio_api_doc:
     documentation:
         info:
-            title: Promote Api
-            description: Handsome API to work with an artist roster
+            title: Content API
+            description: Handsome API to work with blocks
             version: 1.0.0
         produces:
           - application/json

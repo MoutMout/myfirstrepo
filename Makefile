@@ -17,10 +17,10 @@ endif
 	$(PHING_BIN) prepare
 
 start:
-	php app/console server:run
+	php bin/console server:run
 
 stop:
-	php app/console server:stop
+	php bin/console server:stop
 
 test:
 	$(PHING_BIN) prepare
