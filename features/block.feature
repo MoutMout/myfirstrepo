@@ -10,23 +10,23 @@ Feature: Bloc feature
       {
           "data": [
               {
-                  "type": "block",
+                  "type": "blocks",
                   "id": "1",
                   "attributes": {
                       "body": "test"
                   },
                   "links": {
-                      "self": "\/block\/1"
+                      "self": "\/blocks\/1"
                   }
               },
               {
-                  "type": "block",
+                  "type": "blocks",
                   "id": "2",
                   "attributes": {
                       "body": "<b>coucou<\/b>"
                   },
                   "links": {
-                      "self": "\/block\/2"
+                      "self": "\/blocks\/2"
                   }
               }
           ],
@@ -50,13 +50,13 @@ Feature: Bloc feature
      {
         "data": [
             {
-                "type": "block",
+                "type": "blocks",
                 "id": "2",
                 "attributes": {
                     "body": "<b>coucou</b>"
                 },
                 "links": {
-                    "self": "\/block\/2"
+                    "self": "\/blocks\/2"
                 }
             }
         ],
@@ -80,13 +80,13 @@ Feature: Bloc feature
      {
         "data":
             {
-                "type": "block",
+                "type": "blocks",
                 "id": "1",
                 "attributes": {
                     "body": "test"
                 },
                 "links": {
-                    "self": "\/block\/1"
+                    "self": "\/blocks\/1"
                 }
             }
     }

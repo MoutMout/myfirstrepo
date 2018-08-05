@@ -26,7 +26,7 @@
             description="Performs code analysis" />
 
     <target name="test"
-            depends="prepare,phpspec,behat,dredd"
+            depends="phpspec,behat,dredd"
             description="Performs a lint check and runs the tests (without generating code coverage reports)" />
 
     <target name="static-analysis"
@@ -329,7 +329,6 @@
 
     <target name="behat"
             unless="behat.done"
-            depends="prepare"
             description="Run end-to-end tests with Behat">
         <exec executable="${behat}" checkreturn="true" passthru="true"/>
         <property name="behat.done" value="true"/>

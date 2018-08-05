@@ -1,26 +1,19 @@
 {
-  "name": "promote-api",
+  "name": "content-api",
   "version": "1.0.0",
-  "description": "An api to promote your events / artists",
+  "description": "An api to serve sodexo's content",
   "main": "public/index.php",
-  "directories": {
-    "test": "tests"
-  },
   "dependencies": {},
   "devDependencies": {
-    "dredd": "^5"
+    "dredd": "^5",
+    "husky": "^0.14.3"
   },
   "scripts": {
     "test": "./node_modules/.bin/dredd"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BigZ/promoteapi.git"
-  },
-  "author": "Romain Richard",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BigZ/promoteapi/issues"
-  },
-  "homepage": "https://github.com/BigZ/promoteapi#readme"
+  "husky": {
+    "hooks": {
+      "pre-push": "make test"
+    }
+  }
 }
