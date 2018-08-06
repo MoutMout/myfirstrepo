@@ -1,6 +1,6 @@
-blocks:
+restaurants:
     type:     rest
-    resource: App\Controller\BlockController
+    resource: App\Controller\RestaurantController
 
 token:
     type:     rest
