@@ -6,7 +6,7 @@ fos_rest:
             'Symfony\Component\OptionsResolver\Exception\InvalidOptionsException': 400
     param_fetcher_listener: true
     body_listener: true
-    format_listener: true
+    format_listener: false
     view:
         empty_content: 204
         view_response_listener: 'force'

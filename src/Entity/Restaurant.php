@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\Table(name="restaurant")
+ * @ORM\Entity(repositoryClass="App\Repository\RestaurantRepository")
  * @ExclusionPolicy("All")
  */
 

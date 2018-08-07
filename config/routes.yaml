@@ -2,6 +2,10 @@ restaurants:
     type:     rest
     resource: App\Controller\RestaurantController
 
+search:
+    type:     rest
+    resource: App\Controller\SearchController
+
 token:
     type:     rest
     resource: App\Controller\TokenController

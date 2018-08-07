@@ -52,3 +52,11 @@ services:
         class: App\Controller\ExceptionController
         arguments:
             - '@fos_rest.exception.codes_map'
+
+    App\Repository\RestaurantRepository:
+        arguments:
+            - '@doctrine'
+            - 'App\Entity\Restaurant'
+        tags:
+            - { name: doctrine.repository_service }
+
