@@ -26,24 +26,6 @@ services:
         class: App\Security\Authenticator\FormAuthenticator
         arguments: ['@security.password_encoder']
 
-    # Flysystem Clients
-    app.s3_client:
-        class: Aws\S3\S3Client
-        arguments:
-            -
-                version: "latest"
-                region: "%env(AWS_REGION)%"
-                credentials:
-                    key: "%env(AWS_ACCESS_KEY_ID)%"
-                    secret: "%env(AWS_SECRET_ACCESS_KEY)%"
-
-    app.s3_public_url_subscriber:
-        public: true
-        class: S3Url\Subscriber\S3PublicUrlSubscriber
-        arguments: ['@annotations.cached_reader', "%env(AWS_REGION)%", "%env(AWS_BUCKET)%"]
-        tags:
-            - { name: jms_serializer.event_subscriber }
-
     jms_serializer.naming_strategy:
         alias: jms_serializer.identical_property_naming_strategy
 
