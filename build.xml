@@ -14,7 +14,7 @@
     <property name="phpspec" value="./vendor/bin/phpspec"/>
 
     <target name="install"
-            depends="composer,nvm,npm"
+            depends="composer,nvm,yarn"
             description="Prepare for build or tests" />
 
     <target name="prepare"
@@ -73,20 +73,20 @@
 
     <target name="nvm"
             unless="nvm.done"
-            description="Use the proper version of npm">
+            description="Use the proper version of node">
         <exec executable="nvm">
             <arg value="use" />
         </exec>
         <property name="nvm.done" value="true"/>
     </target>
 
-    <target name="npm"
-            unless="npm.done"
+    <target name="yarn"
+            unless="yarn.done"
             description="Install Nodejs Vendors">
-        <exec executable="npm">
+        <exec executable="yarn">
             <arg value="install" />
         </exec>
-        <property name="npm.done" value="true"/>
+        <property name="yarn.done" value="true"/>
     </target>
 
     <target name="drop-schema"
