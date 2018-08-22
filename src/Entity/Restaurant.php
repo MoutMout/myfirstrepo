@@ -11,12 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="restaurant")
  * @ORM\Entity(repositoryClass="App\Repository\RestaurantRepository")
+ *
  * @ExclusionPolicy("All")
  */
-
 class Restaurant
 {
-     /**
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -28,46 +28,46 @@ class Restaurant
     private $id;
 
     /**
-     * @var string $name
+     * @var string
      *
      * @ORM\Column(name="name", type="string")
+     *
      * @Assert\NotBlank()
      *
      * @Expose
-     *
      */
     private $name;
-    
+
     /**
-     * @var string $address
+     * @var string
      *
      * @ORM\Column(name="address", type="string")
+     *
      * @Assert\NotBlank()
      *
      * @Expose
-     *
      */
     private $address;
 
     /**
-     * @var float $latitude
+     * @var float
      *
      * @ORM\Column(name="latitude", type="float")
+     *
      * @Assert\NotBlank()
      *
      * @Expose
-     *
      */
     private $latitude;
 
-     /**
-     * @var float $longitude
+    /**
+     * @var float
      *
      * @ORM\Column(name="longitude", type="float")
+     *
      * @Assert\NotBlank()
      *
      * @Expose
-     *
      */
     private $longitude;
 
@@ -76,13 +76,18 @@ class Restaurant
      *
      * @return $this
      */
-    public function setId(int $id):object 
+    public function setId(int $id)
     {
         $this->id = $id;
-        
+
         return $this;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
     public function setName($name)
     {
         $this->name = $name;
@@ -90,6 +95,11 @@ class Restaurant
         return $this;
     }
 
+    /**
+     * @param string $address
+     *
+     * @return $this
+     */
     public function setAddress($address)
     {
         $this->address = $address;
@@ -97,6 +107,11 @@ class Restaurant
         return $this;
     }
 
+    /**
+     * @param float $latitude
+     *
+     * @return $this
+     */
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
@@ -104,6 +119,11 @@ class Restaurant
         return $this;
     }
 
+    /**
+     * @param float $longitude
+     *
+     * @return $this
+     */
     public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
@@ -111,26 +131,41 @@ class Restaurant
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @return string
+     */
     public function getAddress()
     {
         return $this->address;
     }
 
+    /**
+     * @return float
+     */
     public function getLatitude()
     {
         return $this->latitude;
     }
 
+    /**
+     * @return float
+     */
     public function getLongitude()
     {
         return $this->longitude;

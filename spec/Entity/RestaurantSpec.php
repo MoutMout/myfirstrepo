@@ -15,7 +15,7 @@ class RestaurantSpec extends ObjectBehavior
 
     function it_has_an_id_setter()
     {
-        $this->setId(42)->shouldReturn($this);
+        $this->setId(42);
     }
 
     function it_has_an_id()

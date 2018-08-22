@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
 /**
- * Class Kernel
+ * Class Kernel.
  */
 class Kernel extends BaseKernel
 {
@@ -48,7 +48,7 @@ class Kernel extends BaseKernel
      */
     public function registerBundles()
     {
-        $contents = require $this->getProjectDir().'/config/bundles.php';
+        $contents = include $this->getProjectDir().'/config/bundles.php';
         foreach ($contents as $class => $envs) {
             if (isset($envs['all']) || isset($envs[$this->environment])) {
                 yield new $class();
@@ -58,7 +58,7 @@ class Kernel extends BaseKernel
 
     /**
      * @param ContainerBuilder $container
-     * @param LoaderInterface $loader
+     * @param LoaderInterface  $loader
      *
      * @throws \Exception
      */

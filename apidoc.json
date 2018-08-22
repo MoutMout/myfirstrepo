@@ -12,27 +12,27 @@
         "application/json"
     ],
     "paths": {
-        "/blocks": {
+        "/restaurants": {
             "get": {
-                "summary": "Get all blocs.",
+                "summary": "Get all restaurants.",
                 "responses": {
                     "200": {
-                        "description": "Paginated block collection",
+                        "description": "Paginated restaurant collection",
                         "schema": {
                             "items": {
-                                "$ref": "#/definitions/Block"
+                                "$ref": "#/definitions/Restaurant"
                             }
                         }
                     }
                 }
             }
         },
-        "/blocks/{block}": {
+        "/restaurants/{restaurant}": {
             "get": {
-                "summary": "Get a Block.",
+                "summary": "Get a Restaurant.",
                 "parameters": [
                     {
-                        "name": "block",
+                        "name": "restaurant",
                         "in": "path",
                         "required": true,
                         "type": "string",
@@ -41,70 +41,81 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get a block",
+                        "description": "Get a restaurant",
                         "schema": {
-                            "$ref": "#/definitions/Block"
+                            "$ref": "#/definitions/Restaurant"
                         }
                     },
                     "404": {
-                        "description": "Block not found"
+                        "description": "Restaurant not found"
                     }
                 }
             }
         },
-        "/tokens": {
-            "post": {
+        "/search": {
+            "get": {
+                "summary": "Very minimalistic implementation of a search by location with postgis.",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
+                        "name": "lat",
+                        "in": "query",
                         "required": true,
-                        "description": "Authentication credentials",
-                        "schema": {
-                            "required": [
-                                "username",
-                                "password"
-                            ],
-                            "properties": {
-                                "username": {
-                                    "type": "string"
-                                },
-                                "password": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "type": "number",
+                        "default": 23.1
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "default": 42.7
+                    },
+                    {
+                        "name": "radius",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "default": 500
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Auth granted",
+                        "description": "Search by location results",
                         "schema": {
-                            "properties": {
-                                "apiKey": {
-                                    "type": "string"
-                                }
+                            "items": {
+                                "$ref": "#/definitions/Restaurant"
                             }
                         }
-                    },
-                    "403": {
-                        "description": "Invalid credentials"
                     }
                 }
             }
         }
     },
     "definitions": {
-        "Block": {
+        "Restaurant": {
             "required": [
-                "body"
+                "name",
+                "address",
+                "latitude",
+                "longitude"
             ],
             "properties": {
                 "id": {
                     "type": "integer"
                 },
-                "body": {
+                "name": {
                     "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float"
                 }
             },
             "type": "object"

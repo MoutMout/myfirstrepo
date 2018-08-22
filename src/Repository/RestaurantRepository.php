@@ -7,7 +7,8 @@ use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use App\Entity\Restaurant;
 
 /**
- * Class RestaurantRepository
+ * Class RestaurantRepository.
+ *
  * @author Romain Richard
  */
 class RestaurantRepository extends ServiceEntityRepository
@@ -15,7 +16,8 @@ class RestaurantRepository extends ServiceEntityRepository
     /**
      * @param float $latitude
      * @param float $longitude
-     * @param int $radius In kilometers.
+     * @param int   $radius    in kilometers
+     *
      * @return mixed
      */
     public function findRestaurantByPosition(float $latitude, float $longitude, int $radius)
@@ -27,7 +29,7 @@ class RestaurantRepository extends ServiceEntityRepository
         $sql = <<<SQL
             SELECT *
             FROM restaurant
-            WHERE ST_Distance_Sphere(
+            WHERE ST_DistanceSphere(
               st_point(restaurant.longitude, restaurant.latitude), 
               st_point(:longitude, :latitude)
             ) <= :radius

@@ -23,7 +23,8 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 /**
- * Class FormAuthenticator
+ * Class FormAuthenticator.
+ *
  * @author Romain Richard
  */
 class FormAuthenticator extends AbstractGuardAuthenticator

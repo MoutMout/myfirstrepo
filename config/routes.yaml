@@ -5,8 +5,3 @@ restaurants:
 search:
     type:     rest
     resource: App\Controller\SearchController
-
-token:
-    type:     rest
-    resource: App\Controller\TokenController
-

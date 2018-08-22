@@ -21,7 +21,8 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Doctrine\ORM\EntityManager;
 
 /**
- * Class TokenAuthenticator
+ * Class TokenAuthenticator.
+ *
  * @author Romain Richard
  */
 class TokenAuthenticator extends AbstractGuardAuthenticator

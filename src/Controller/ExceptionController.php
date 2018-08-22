@@ -6,10 +6,9 @@ use FOS\RestBundle\Util\ExceptionValueMap;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 
 /**
- * Custom ExceptionController that renders to json
+ * Custom ExceptionController that renders to json.
  */
 class ExceptionController
 {
@@ -18,15 +17,21 @@ class ExceptionController
      */
     private $exceptionCodes;
 
-    public function __construct(ExceptionValueMap $exceptionCodes) {
+    /**
+     * ExceptionController constructor.
+     *
+     * @param ExceptionValueMap $exceptionCodes
+     */
+    public function __construct(ExceptionValueMap $exceptionCodes)
+    {
         $this->exceptionCodes = $exceptionCodes;
     }
 
     /**
      * Converts an Exception to a Response.
      *
-     * @param Request                   $request
-     * @param \Exception|\Throwable     $exception
+     * @param Request               $request
+     * @param \Exception|\Throwable $exception
      *
      * @throws \InvalidArgumentException
      *
@@ -35,6 +40,7 @@ class ExceptionController
     public function showAction(Request $request, \Exception $exception)
     {
         $code = $this->getStatusCode($exception);
+
         return new Response(
             json_encode(
                 ['error' => $exception->getMessage()],

@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the promote-api package.
- *
- * (c) Bigz
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
-*/
-
 namespace App\DataFixtures\ORM;
 
 use App\Entity\Restaurant;
@@ -17,13 +8,14 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
- * Class LoadRestaurantData
+ * Class LoadRestaurantData.
+ *
  * @author Romain Richard
  */
 class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -71,7 +63,7 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 'address' => 'Centre Commercial Les Trois Moulins, 4 Allée Sainte-Lucie, 92130 Issy-les-Moulineaux',
                 'longitude' => 2.2492704,
                 'latitude' => 48.8211241,
-            ]
+            ],
         ];
     }
 }

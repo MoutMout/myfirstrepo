@@ -230,6 +230,7 @@
             <arg value="--standard=./vendor/escapestudios/symfony2-coding-standard/Symfony/ruleset.xml" />
             <arg value="--extensions=php" />
             <arg value="--ignore=autoload.php" />
+            <arg value="--exclude=Symfony.Commenting.License" />
             <arg path="./src" />
         </exec>
 
