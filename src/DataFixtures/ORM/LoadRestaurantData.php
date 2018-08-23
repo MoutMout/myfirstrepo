@@ -59,10 +59,16 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 'latitude' => 48.870955,
             ],
             [
-                'name' => 'McDonalds',
+                'name' => 'McDonalds Issy',
                 'address' => 'Centre Commercial Les Trois Moulins, 4 Allée Sainte-Lucie, 92130 Issy-les-Moulineaux',
                 'longitude' => 2.2492704,
                 'latitude' => 48.8211241,
+            ],
+            [
+                'name' => 'McDonalds Republique',
+                'address' => '19 Place de la Republique, 75003 Paris',
+                'longitude' => 2.362397,
+                'latitude' => 48.867622,
             ],
         ];
     }

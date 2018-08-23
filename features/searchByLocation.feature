@@ -34,6 +34,19 @@ Feature: Search feature
             "links":{
               "self":"\/search\/2"
             }
+          },
+          {
+            "type": "search",
+            "id": "4",
+            "attributes": {
+              "name": "McDonalds Republique",
+              "address": "19 Place de la Republique, 75003 Paris",
+              "latitude": 48.867622,
+              "longitude": 2.362397
+            },
+            "links": {
+              "self": "\/search\/4"
+            }
           }
         ]
       }

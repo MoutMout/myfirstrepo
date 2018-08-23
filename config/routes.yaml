@@ -5,3 +5,7 @@ restaurants:
 search:
     type:     rest
     resource: App\Controller\SearchController
+
+closestRestaurants:
+    type:     rest
+    resource: App\Controller\ClosestRestaurantController
