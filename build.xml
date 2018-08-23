@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="promote-api" default="full-build">
+<project name="mock-api" default="full-build">
     <property name="console" value="./bin/console"/>
     <property name="pdepend" value="./vendor/bin/pdepend"/>
     <property name="phpcpd"  value="./vendor/bin/phpcpd"/>
@@ -7,7 +7,6 @@
     <property name="phpdox"  value="./vendor/bin/phpdox"/>
     <property name="phploc"  value="./vendor/bin/phploc"/>
     <property name="phpmd"   value="./vendor/bin/phpmd"/>
-    <property name="phpunit" value="./vendor/bin/phpunit"/>
     <property name="phpstan" value="./vendor/bin/phpstan"/>
     <property name="behat"   value="./vendor/bin/behat"/>
     <property name="dredd"   value="./node_modules/.bin/dredd"/>

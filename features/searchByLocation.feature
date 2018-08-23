@@ -1,5 +1,5 @@
-Feature: Bloc feature
-  Scenario: Get blocks
+Feature: Search feature
+  Scenario: Search nearby restaurants
     When I add "Content-Type" header equal to "application/vnd.api+json"
     And I send a "GET" request to "/search?lat=48.8706675&lng=2.3553493&radius=5000"
     Then the response status code should be 200

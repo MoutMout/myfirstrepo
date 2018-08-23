@@ -9,7 +9,9 @@
     "husky": "^0.14.3"
   },
   "scripts": {
-    "test": "./node_modules/.bin/dredd"
+    "test": "./node_modules/.bin/dredd",
+    "precommit": "make analysis",
+    "prepush": "make test"
   },
   "husky": {
     "hooks": {
