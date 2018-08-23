@@ -18,14 +18,6 @@ services:
         #resource: '../src/Controller'
         #tags: ['controller.service_arguments']
 
-    #Authenticators
-    app.token_authenticator:
-        class: App\Security\Authenticator\TokenAuthenticator
-        arguments: ['@doctrine.orm.entity_manager']
-    app.form_authenticator:
-        class: App\Security\Authenticator\FormAuthenticator
-        arguments: ['@security.password_encoder']
-
     jms_serializer.naming_strategy:
         alias: jms_serializer.identical_property_naming_strategy
 

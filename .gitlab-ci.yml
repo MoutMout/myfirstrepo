@@ -1,0 +1,27 @@
+image: 'docker.wdg.cloud/sodexo/infra/ci-php'
+
+stages:
+  - test
+
+services:
+  - camptocamp/postgres:10
+
+variables:
+  POSTGRES_USER: ci_user
+  POSTGRES_PASSWORD: ci_pass
+  POSTGRES_DB: ci_db
+  DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@camptocamp-postgres/${POSTGRES_DB}"
+
+cache:
+  paths:
+    - vendor/*
+    - node_modules/*
+
+before_script:
+  - make install
+
+test:
+  stage: test
+  script:
+    - make analysis
+    - make test
