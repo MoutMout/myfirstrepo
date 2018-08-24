@@ -41,4 +41,35 @@ SQL;
 
         return $query->execute();
     }
+
+    /**
+     * @param float  $latitude
+     * @param float  $longitude
+     * @param string $search
+     *
+     * @return mixed
+     */
+    public function findClosestRestaurants(float $latitude, float $longitude, string $search)
+    {
+        $entityManager = $this->getEntityManager();
+        $rsm = new ResultSetMappingBuilder($this->getEntityManager());
+        $rsm->addRootEntityFromClassMetadata(Restaurant::class, 'restaurant');
+        // uses postgis extension to calculate the distance between 2 points on earth
+        $sql = <<<SQL
+            SELECT *, ST_DistanceSphere(
+              st_point(restaurant.longitude, restaurant.latitude), 
+              st_point(:longitude, :latitude)
+            ) as distance
+            FROM restaurant
+            WHERE lower(restaurant.name) LIKE :search
+            OR lower(restaurant.address) LIKE :search
+            ORDER BY distance
+SQL;
+        $query = $entityManager->createNativeQuery($sql, $rsm)
+            ->setParameter(':latitude', $latitude)
+            ->setParameter(':longitude', $longitude)
+            ->setParameter(':search', '%'.strtolower($search).'%');
+
+        return $query->execute();
+    }
 }

@@ -61,26 +61,64 @@
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "default": 23.1
+                        "x-example": 23.1
                     },
                     {
                         "name": "lng",
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "default": 42.7
+                        "x-example": 42.7
                     },
                     {
                         "name": "radius",
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "default": 500
+                        "x-example": 500
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Search by location results",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Restaurant"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/closestrestaurants": {
+            "get": {
+                "summary": "Very minimalistic implementation of a closest restaurant search by name & address",
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "x-example": 20
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "x-example": 30
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "rz"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Search by name & address results",
                         "schema": {
                             "items": {
                                 "$ref": "#/definitions/Restaurant"
