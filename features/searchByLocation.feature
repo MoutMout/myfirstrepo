@@ -47,6 +47,71 @@ Feature: Search feature
             "links": {
               "self": "\/search\/4"
             }
+          },
+          {
+            "type": "search",
+            "id": "5",
+            "attributes": {
+              "name": "M&S FOOD LEDRU ROLLIN",
+              "address": "19 Avenue Ledru-Rollin, 75011 Paris",
+              "latitude": 48.8498437,
+              "longitude": 2.3766971
+            },
+            "links": {
+              "self": "/search/5"
+            }
+          },
+          {
+            "type": "search",
+            "id": "6",
+            "attributes": {
+              "name": "Princesse Crepe",
+              "address": "19 Rue des Ecouffes, 75004 Paris",
+              "latitude": 48.853423,
+              "longitude": 2.3634362
+            },
+            "links": {
+              "self": "/search/6"
+            }
+          },
+          {
+            "type": "search",
+            "id": "7",
+            "attributes": {
+              "name": "Le Potager du Marais",
+              "address": "19 Rue Rambuteau, 75003 Paris",
+              "latitude": 48.8605702,
+              "longitude": 2.3537418
+            },
+            "links": {
+              "self": "/search/7"
+            }
+          },
+          {
+            "type": "search",
+            "id": "8",
+            "attributes": {
+              "name": "Le Grenier de Notre-Dame",
+              "address": "19 Rue de la Bûcherie, 75005 Paris",
+              "latitude": 48.8516369,
+              "longitude": 2.3451695
+            },
+            "links": {
+              "self": "/search/8"
+            }
+          },
+          {
+            "type": "search",
+            "id": "9",
+            "attributes": {
+              "name": "Oi Sushi",
+              "address": "19 Rue Mouffetard, 75005 Paris",
+              "latitude": 48.8463419,
+              "longitude": 2.3487959
+            },
+            "links": {
+              "self": "/search/9"
+            }
           }
         ]
       }
