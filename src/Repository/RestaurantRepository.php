@@ -64,6 +64,7 @@ SQL;
             WHERE lower(restaurant.name) LIKE :search
             OR lower(restaurant.address) LIKE :search
             ORDER BY distance
+            LIMIT 5
 SQL;
         $query = $entityManager->createNativeQuery($sql, $rsm)
             ->setParameter(':latitude', $latitude)
