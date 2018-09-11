@@ -6,11 +6,6 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use App\Entity\Restaurant;
 
-/**
- * Class RestaurantRepository.
- *
- * @author Romain Richard
- */
 class RestaurantRepository extends ServiceEntityRepository
 {
     /**

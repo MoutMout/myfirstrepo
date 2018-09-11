@@ -1,11 +1,19 @@
 restaurants:
-    type:     rest
-    resource: App\Controller\RestaurantController
+  type:     rest
+  resource: App\Controller\RestaurantController
+
+activities:
+  type:     rest
+  resource: App\Controller\ActivityController
+
+products:
+  type:     rest
+  resource: App\Controller\ProductController
 
 search:
-    type:     rest
-    resource: App\Controller\SearchController
+  type:     rest
+  resource: App\Controller\SearchController
 
 closestRestaurants:
-    type:     rest
-    resource: App\Controller\ClosestRestaurantController
+  type:     rest
+  resource: App\Controller\ClosestRestaurantController
