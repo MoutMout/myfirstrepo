@@ -70,6 +70,36 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 'longitude' => 2.362397,
                 'latitude' => 48.867622,
             ],
+            [
+                'name' => 'M&S FOOD LEDRU ROLLIN',
+                'address' => '19 Avenue Ledru-Rollin, 75011 Paris',
+                'longitude' => 2.3766971,
+                'latitude' => 48.8498437,
+            ],
+            [
+                'name' => 'Princesse Crepe',
+                'address' => '19 Rue des Ecouffes, 75004 Paris',
+                'longitude' => 2.3634362,
+                'latitude' => 48.853423,
+            ],
+            [
+                'name' => 'Le Potager du Marais',
+                'address' => '19 Rue Rambuteau, 75003 Paris',
+                'longitude' => 2.3537418,
+                'latitude' => 48.8605702,
+            ],
+            [
+                'name' => 'Le Grenier de Notre-Dame',
+                'address' => '19 Rue de la Bûcherie, 75005 Paris',
+                'longitude' => 2.3451695,
+                'latitude' => 48.8516369,
+            ],
+            [
+                'name' => 'Oi Sushi',
+                'address' => '19 Rue Mouffetard, 75005 Paris',
+                'longitude' => 2.3487959,
+                'latitude' => 48.8463419,
+            ],
         ];
     }
 }
