@@ -16,9 +16,6 @@ endif
 	$(PHING_BIN) install
 	$(PHING_BIN) prepare
 
-docker-in:
-	cd ../dev-manager && docker-compose exec mock_api /bin/bash
-
 start:
 	php bin/console server:run
 
