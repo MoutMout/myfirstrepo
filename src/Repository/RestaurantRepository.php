@@ -16,12 +16,13 @@ class RestaurantRepository extends ServiceEntityRepository
     /**
      * @param float $latitude
      * @param float $longitude
-     * @param int   $radius    in kilometers
+     * @param int   $radius    in kilometers DEPRECATED
      *
      * @return mixed
      */
     public function findRestaurantByPosition(float $latitude, float $longitude, int $radius)
     {
+        // first, get all restaurants within radius
         $entityManager = $this->getEntityManager();
         $rsm = new ResultSetMappingBuilder($this->getEntityManager());
         $rsm->addRootEntityFromClassMetadata(Restaurant::class, 'restaurant');
@@ -39,7 +40,26 @@ SQL;
             ->setParameter(':longitude', $longitude)
             ->setParameter(':radius', $radius);
 
-        return $query->execute();
+        $result = $query->execute();
+
+        if (0 === count($result)) {
+            $sql = <<<SQL
+            SELECT *, ST_DistanceSphere(
+              st_point(restaurant.longitude, restaurant.latitude), 
+              st_point(:longitude, :latitude)
+            ) as distance
+            FROM restaurant
+            ORDER BY distance ASC
+            LIMIT 5
+SQL;
+            $query = $entityManager->createNativeQuery($sql, $rsm)
+                ->setParameter(':latitude', $latitude)
+                ->setParameter(':longitude', $longitude);
+
+            return $query->execute();
+        }
+
+        return $result;
     }
 
     /**
