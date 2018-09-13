@@ -52,65 +52,143 @@ Feature: Search feature
             "type": "search",
             "id": "5",
             "attributes": {
-              "name": "M&S FOOD LEDRU ROLLIN",
-              "address": "19 Avenue Ledru-Rollin, 75011 Paris",
-              "latitude": 48.8498437,
-              "longitude": 2.3766971
+              "name": "BOULANGERIE",
+              "address": "19 RUE BOUCHARDON , 75010 PARIS",
+              "latitude": 48.8708305,
+              "longitude": 2.3578639
             },
             "links": {
-              "self": "/search/5"
+              "self": "\/search\/5"
             }
           },
           {
             "type": "search",
             "id": "6",
             "attributes": {
-              "name": "Princesse Crepe",
-              "address": "19 Rue des Ecouffes, 75004 Paris",
-              "latitude": 48.853423,
-              "longitude": 2.3634362
+              "name": "FRANPRIX 5278",
+              "address": "16 RUE BOUCHARDON , 75010 PARIS",
+              "latitude": 48.8704948,
+              "longitude": 2.3576760
             },
             "links": {
-              "self": "/search/6"
+              "self": "\/search\/6"
             }
           },
           {
             "type": "search",
             "id": "7",
             "attributes": {
-              "name": "Le Potager du Marais",
-              "address": "19 Rue Rambuteau, 75003 Paris",
-              "latitude": 48.8605702,
-              "longitude": 2.3537418
+              "name": "LA PENDULE OCCITANE",
+              "address": "27 RUE BOUCHARDON , 75010 PARIS",
+              "latitude": 48.8711433,
+              "longitude": 2.3579459
             },
             "links": {
-              "self": "/search/7"
+              "self": "\/search\/7"
             }
           },
           {
             "type": "search",
             "id": "8",
             "attributes": {
-              "name": "Le Grenier de Notre-Dame",
-              "address": "19 Rue de la Bûcherie, 75005 Paris",
-              "latitude": 48.8516369,
-              "longitude": 2.3451695
+              "name": "LE REVEIL DU XEME",
+              "address": "35 RUE DU CHATEAU D EAU 29 RUE BOUCHARDON, 75010 PARIS",
+              "latitude": 48.8712272,
+              "longitude": 2.3580179
             },
             "links": {
-              "self": "/search/8"
+              "self": "\/search\/8"
             }
           },
           {
             "type": "search",
             "id": "9",
             "attributes": {
-              "name": "Oi Sushi",
-              "address": "19 Rue Mouffetard, 75005 Paris",
-              "latitude": 48.8463419,
-              "longitude": 2.3487959
+              "name": "LA CASBA MAROCAINE",
+              "address": "31 RUE DU CHATEAU D EAU MARCHE SAINT MARTIN, 75010 PARIS",
+              "latitude": 48.8706283,
+              "longitude": 2.3578836
             },
             "links": {
-              "self": "/search/9"
+              "self": "\/search\/9"
+            }
+          },
+          {
+            "type": "search",
+            "id": "10",
+            "attributes": {
+              "name": "LA PETITE LOUISE",
+              "address": "54 RUE DU CHATEAU D EAU ANGLE RUE DU FAUBOURG SAINT MARTIN, 75010 PARIS",
+              "latitude": 48.8719367,
+              "longitude": 2.3570299
+            },
+            "links": {
+              "self": "\/search\/10"
+            }
+          },
+          {
+            "type": "search",
+            "id": "11",
+            "attributes": {
+              "name": "CHICHE",
+              "address": "29 BIS RUE DU CHATEAU D EAU , 75010 PARIS",
+              "latitude": 48.8708839,
+              "longitude": 2.3586773
+            },
+            "links": {
+              "self": "\/search\/11"
+            }
+          },
+          {
+            "type": "search",
+            "id": "12",
+            "attributes": {
+              "name": "MIAM",
+              "address": "9 CITE RIVERIN , 75010 PARIS",
+              "latitude": 48.8705940,
+              "longitude": 2.3584539
+            },
+            "links": {
+              "self": "\/search\/12"
+            }
+          },
+          {
+            "type": "search",
+            "id": "13",
+             "attributes": {
+               "name": "POINT BAR",
+               "address": "2 PASSAGE DU MARCHE SAINT MARTIN , 75010 PARIS",
+               "latitude": 48.8708686,
+               "longitude": 2.3578970
+             },
+            "links": {
+              "self": "\/search\/13"
+            }
+          },
+          {
+            "type": "search",
+            "id": "15",
+            "attributes": {
+              "name": "LA PLACE",
+              "address": "58 RUE DE LA SABLIERE , 75014 PARIS",
+              "latitude": 48.8323783,
+              "longitude": 2.3207099
+            },
+            "links": {
+              "self": "\/search\/15"
+            }
+          },
+          {
+            "type": "search",
+            "id": "17",
+            "attributes": {
+              "name": "DALAT VIETNAM",
+              "address": "31 RUE DE LA SABLIERE , 75014 PARIS",
+              "latitude": 48.8320045,
+              "longitude": 2.3219854
+            },
+            "links": {
+                "self": "/search/17"
             }
           }
         ]
