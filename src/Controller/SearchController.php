@@ -37,15 +37,14 @@ class SearchController extends Controller
     {
         $latitude = $request->query->get('lat');
         $longitude = $request->query->get('lng');
-        $radius = $request->query->get('radius');
 
-        if (!$latitude || !$longitude || !$radius) {
+        if (!$latitude || !$longitude) {
             return new Response('Invalid request', 400);
         }
 
         return $this
             ->getDoctrine()
             ->getRepository(Restaurant::class)
-            ->findRestaurantByPosition((float) $latitude, (float) $longitude, (int) $radius);
+            ->findRestaurantByPosition((float) $latitude, (float) $longitude, 800);
     }
 }
