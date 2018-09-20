@@ -127,7 +127,47 @@
                     }
                 }
             }
+        },
+      "/cards": {
+        "get": {
+          "summary": "Get all cards.",
+          "responses": {
+            "200": {
+              "description": "Paginated card collection",
+              "schema": {
+                "items": {
+                  "$ref": "#/definitions/Card"
+                }
+              }
+            }
+          }
         }
+      },
+      "/cards/{card}": {
+        "get": {
+          "summary": "Get a Card.",
+          "parameters": [
+            {
+              "name": "card",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "x-example": "1"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Get a card",
+              "schema": {
+                "$ref": "#/definitions/Card"
+              }
+            },
+            "404": {
+              "description": "Card not found"
+            }
+          }
+        }
+      }
     },
     "definitions": {
         "Restaurant": {
@@ -157,6 +197,53 @@
                 }
             },
             "type": "object"
+        },
+        "Card": {
+          "required": [
+            "userId",
+            "type",
+            "numbers",
+            "company",
+            "isActive",
+            "expireAt",
+            "country",
+            "balance",
+            "currency"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "userId": {
+              "type": "integer"
+            },
+            "type": {
+              "type": "string"
+            },
+            "numbers": {
+              "type": "string"
+            },
+            "company": {
+              "type": "string"
+            },
+            "isActive": {
+              "type": "boolean"
+            },
+            "expireAt": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "balance": {
+              "type": "number",
+              "format": "float"
+            },
+            "currency": {
+              "type": "string"
+            }
+          },
+          "type": "object"
         }
     }
 }
