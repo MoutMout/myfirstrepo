@@ -9,3 +9,7 @@ search:
 closestRestaurants:
     type:     rest
     resource: App\Controller\ClosestRestaurantController
+
+cards:
+    type:     rest
+    resource: App\Controller\CardController
