@@ -13,3 +13,7 @@ closestRestaurants:
 cards:
     type:     rest
     resource: App\Controller\CardController
+
+transactions:
+    type:     rest
+    resource: App\Controller\TransactionController
