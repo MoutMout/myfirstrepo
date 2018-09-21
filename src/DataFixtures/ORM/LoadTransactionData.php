@@ -96,7 +96,7 @@ class LoadTransactionData extends AbstractFixture implements OrderedFixtureInter
                 'value' => 12.35,
             ],
             [
-                'card' => '1',
+                'card' => '4',
                 'type' => 'debit',
                 'isCredit' => 'false',
                 'description' => 'Mon Petit Pancake',
@@ -104,7 +104,7 @@ class LoadTransactionData extends AbstractFixture implements OrderedFixtureInter
                 'value' => 9.30,
             ],
             [
-                'card' => '1',
+                'card' => '4',
                 'type' => 'credit',
                 'isCredit' => 'true',
                 'description' => 'New Card Credit - September',
