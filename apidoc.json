@@ -167,7 +167,48 @@
             }
           }
         }
-      }
+      },
+        "/transactions": {
+            "get": {
+                "summary": "Get all transactions.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated transaction collection",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Transaction"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions/{transaction}": {
+            "get": {
+                "summary": "Get a Transaction.",
+                "parameters": [
+                    {
+                        "name": "transaction",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a transaction",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    },
+                    "404": {
+                        "description": "Transaction not found"
+                    }
+                }
+            }
+        },
+
     },
     "definitions": {
         "Restaurant": {
@@ -244,6 +285,41 @@
             }
           },
           "type": "object"
+        },
+        "Transaction": {
+            "required": [
+                "card",
+                "type",
+                "isCredit",
+                "description",
+                "date",
+                "value"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "card": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "isCredit": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number",
+                    "format": "float"
+                },
+            },
+            "type": "object"
         }
     }
 }
