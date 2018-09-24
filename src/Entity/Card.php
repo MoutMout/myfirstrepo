@@ -76,14 +76,14 @@ class Card
      *
      * @ORM\Column(name="isActive", type="boolean")
      *
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      *
      * @Expose
      */
     private $isActive;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      *
      * @ORM\Column(name="expireAt", type="datetime")
      *
