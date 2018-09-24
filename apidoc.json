@@ -61,21 +61,21 @@
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "x-example": 23.1
+                        "default": 23.1
                     },
                     {
                         "name": "lng",
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "x-example": 42.7
+                        "default": 42.7
                     },
                     {
                         "name": "radius",
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "x-example": 500
+                        "default": 500
                     }
                 ],
                 "responses": {
@@ -99,21 +99,21 @@
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "x-example": 20
+                        "default": 23.1
                     },
                     {
                         "name": "lng",
                         "in": "query",
                         "required": true,
                         "type": "number",
-                        "x-example": 30
+                        "default": 42.7
                     },
                     {
                         "name": "search",
                         "in": "query",
                         "required": true,
                         "type": "string",
-                        "x-example": "rz"
+                        "default": "test"
                     }
                 ],
                 "responses": {
@@ -128,52 +128,91 @@
                 }
             }
         },
-      "/cards": {
-        "get": {
-          "summary": "Get all cards.",
-          "responses": {
-            "200": {
-              "description": "Paginated card collection",
-              "schema": {
-                "items": {
-                  "$ref": "#/definitions/Card"
-                }
-              }
-            }
-          }
-        }
-      },
-      "/cards/{card}": {
-        "get": {
-          "summary": "Get a Card.",
-          "parameters": [
-            {
-              "name": "card",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "x-example": "1"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Get a card",
-              "schema": {
-                "$ref": "#/definitions/Card"
-              }
-            },
-            "404": {
-              "description": "Card not found"
-            }
-          }
-        }
-      },
-        "/transactions": {
+        "/cards": {
             "get": {
-                "summary": "Get all transactions.",
+                "summary": "Get all cards.",
                 "responses": {
                     "200": {
-                        "description": "Paginated transaction collection",
+                        "description": "Paginated card collection",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Card"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cards/{card}": {
+            "get": {
+                "summary": "Get a Card.",
+                "parameters": [
+                    {
+                        "name": "card",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a card",
+                        "schema": {
+                            "$ref": "#/definitions/Card"
+                        }
+                    },
+                    "404": {
+                        "description": "Card not found"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Patch a Card.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Card to patch",
+                        "schema": {
+                            "properties": {
+                                "card": {
+                                    "$ref": "#/definitions/CardType"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "card",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Card updated",
+                        "schema": {
+                            "$ref": "#/definitions/Card"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request"
+                    },
+                    "404": {
+                        "description": "Card not found"
+                    }
+                }
+            }
+        },
+        "/transactions": {
+            "get": {
+                "summary": "Get all$transactions.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated$transaction collection",
                         "schema": {
                             "items": {
                                 "$ref": "#/definitions/Transaction"
@@ -197,7 +236,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get a transaction",
+                        "description": "Get a$transaction",
                         "schema": {
                             "$ref": "#/definitions/Transaction"
                         }
@@ -207,8 +246,7 @@
                     }
                 }
             }
-        },
-
+        }
     },
     "definitions": {
         "Restaurant": {
@@ -240,55 +278,99 @@
             "type": "object"
         },
         "Card": {
-          "required": [
-            "userId",
-            "type",
-            "numbers",
-            "company",
-            "isActive",
-            "expireAt",
-            "country",
-            "balance",
-            "currency"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
+            "required": [
+                "userId",
+                "type",
+                "numbers",
+                "company",
+                "isActive",
+                "expireAt",
+                "country",
+                "balance",
+                "currency"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "numbers": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                },
+                "expireAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "currency": {
+                    "type": "string"
+                }
             },
-            "userId": {
-              "type": "integer"
+            "type": "object"
+        },
+        "CardType": {
+            "required": [
+                "userId",
+                "type",
+                "numbers",
+                "company",
+                "isActive",
+                "expireAt",
+                "country",
+                "balance",
+                "currency"
+            ],
+            "properties": {
+                "userId": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "numbers": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                },
+                "expireAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                }
             },
-            "type": {
-              "type": "string"
-            },
-            "numbers": {
-              "type": "string"
-            },
-            "company": {
-              "type": "string"
-            },
-            "isActive": {
-              "type": "boolean"
-            },
-            "expireAt": {
-              "type": "string"
-            },
-            "country": {
-              "type": "string"
-            },
-            "balance": {
-              "type": "number",
-              "format": "float"
-            },
-            "currency": {
-              "type": "string"
-            }
-          },
-          "type": "object"
+            "type": "object"
         },
         "Transaction": {
             "required": [
-                "card",
                 "type",
                 "isCredit",
                 "description",
@@ -312,12 +394,13 @@
                     "type": "string"
                 },
                 "date": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "date-time"
                 },
                 "value": {
                     "type": "number",
                     "format": "float"
-                },
+                }
             },
             "type": "object"
         }
