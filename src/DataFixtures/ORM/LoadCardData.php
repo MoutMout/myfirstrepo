@@ -41,7 +41,7 @@ class LoadCardData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 5678;
+        return 2;
     }
 
     /**

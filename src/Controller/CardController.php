@@ -4,19 +4,36 @@ namespace App\Controller;
 
 use App\Entity\Card;
 use App\Form\Type\CardType;
-use FOS\RestBundle\Controller\ControllerTrait;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Halapi\Representation\PaginatedRepresentation;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
+use Symfony\Component\Routing\Annotation\Route;
+use WizardsRest\CollectionManager;
+use Mcfedr\JsonFormBundle\Controller\JsonControllerTrait;
 
 /**
  * Class CardController.
+ * @Route("/cards")
  */
 class CardController extends Controller
 {
-    use ControllerTrait;
+    use JsonControllerTrait;
+
+    /**
+     * @var CollectionManager
+     */
+    private $rest;
+
+    /**
+     * ArtistController constructor.
+     * @param CollectionManager $rest
+     */
+    public function __construct(CollectionManager $rest)
+    {
+        $this->rest = $rest;
+    }
 
     /**
      * Get all cards.
@@ -27,15 +44,17 @@ class CardController extends Controller
      * @SWG\Items(@Model(type=Card::class))
      * )
      *
-     * @return PaginatedRepresentation
+     * @Route("", methods={"GET"})
      */
-    public function getCardsAction()
+    public function getCardsAction(ServerRequestInterface $request): \Traversable
     {
-        return $this->get('bigz_halapi.pagination_factory')->getRepresentation(Card::class);
+        return $this->rest->getPaginatedCollection(Card::class, $request);
     }
 
     /**
      * Get a Card.
+     *
+     * @Route("/{id}", methods={"GET"})
      *
      * @SWG\Response(response=200, description="Get a card", @Model(type=Card::class))
      * @SWG\Response(response=404, description="Card not found")
@@ -51,6 +70,8 @@ class CardController extends Controller
 
     /**
      * Patch a Card.
+     *
+     * @Route("/{id}", methods={"PATCH"})
      *
      * @SWG\Parameter(
      *     name="body",
@@ -73,15 +94,11 @@ class CardController extends Controller
     public function patchCardAction(Request $request, Card $card)
     {
         $form = $this->createForm(CardType::class, $card, ['method' => 'PATCH']);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($card);
-            $manager->flush();
+        $this->handleJsonForm($form, $request);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($card);
+        $em->flush();
 
-            return $card;
-        }
-
-        return $this->view($form, 400);
+        return $card;
     }
 }

@@ -3,27 +3,23 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
+use WizardsRest\Annotation\Exposable;
 use Symfony\Component\Validator\Constraints as Assert;
-use \DateTime;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="card")
- *
- * @ExclusionPolicy("All")
  */
 class Card
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id",               type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Expose
+     * @Exposable
      */
     private $id;
 
@@ -34,7 +30,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $userId;
 
@@ -45,7 +41,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $type;
 
@@ -56,7 +52,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $numbers;
 
@@ -67,7 +63,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $company;
 
@@ -78,7 +74,7 @@ class Card
      *
      * @Assert\NotNull()
      *
-     * @Expose
+     * @Exposable
      */
     private $isActive;
 
@@ -89,7 +85,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $expireAt;
 
@@ -100,7 +96,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $country;
 
@@ -111,7 +107,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $balance;
 
@@ -122,7 +118,7 @@ class Card
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $currency;
 

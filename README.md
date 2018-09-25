@@ -8,7 +8,6 @@ You need a few software installed to run this project:
 * PHP >= 7.1
 * Composer
 * PostgreSQL > 9
-* Postgis
 
 Usefull but not mandatory
 * Make

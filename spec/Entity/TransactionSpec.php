@@ -2,6 +2,7 @@
 
 namespace spec\App\Entity;
 
+use App\Entity\Card;
 use App\Entity\Transaction;
 use PhpSpec\ObjectBehavior;
 use \DateTime;
@@ -26,13 +27,14 @@ class TransactionSpec extends ObjectBehavior
 
     function it_has_a_card_setter()
     {
-        $this->setCard(666)->shouldReturn($this);
+        $this->setCard(new Card())->shouldReturn($this);
     }
 
     function it_has_a_card()
     {
-        $this->setCard(666);
-        $this->getCard()->shouldReturn(666);
+        $card = new Card();
+        $this->setCard($card);
+        $this->getCard()->shouldReturn($card);
     }
 
     function it_has_a_type_setter()

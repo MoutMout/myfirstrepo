@@ -3,39 +3,55 @@
 namespace App\Controller;
 
 use App\Entity\Transaction;
-use FOS\RestBundle\Controller\ControllerTrait;
+use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use WizardsRest\CollectionManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Halapi\Representation\PaginatedRepresentation;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 
 /**
  * Class TransactionController.
+ * @Route("/transactions")
  */
 class TransactionController extends Controller
 {
-    use ControllerTrait;
+    /**
+     * @var CollectionManager
+     */
+    private $rest;
 
     /**
-     * Get all$transactions.
+     * ArtistController constructor.
+     * @param CollectionManager $rest
+     */
+    public function __construct(CollectionManager $rest)
+    {
+        $this->rest = $rest;
+    }
+
+    /**
+     * Get all transactions.
+     *
+     * @Route("", methods={"GET"})
      *
      * @SWG\Response(
      *     response=200,
      *     description="Paginated$transaction collection",
      * @SWG\Items(@Model(type=Transaction::class))
      * )
-     *
-     * @return PaginatedRepresentation
      */
-    public function getTransactionsAction()
+    public function getTransactionsAction(ServerRequestInterface $request): \Traversable
     {
-        return $this->get('bigz_halapi.pagination_factory')->getRepresentation(Transaction::class);
+        return $this->rest->getPaginatedCollection(Transaction::class, $request);
     }
 
     /**
      * Get a Transaction.
      *
-     * @SWG\Response(response=200, description="Get a$transaction", @Model(type=Transaction::class))
+     * @Route("/{id}", methods={"GET"})
+     *
+     * @SWG\Response(response=200, description="Get a transaction", @Model(type=Transaction::class))
      * @SWG\Response(response=404, description="Transaction not found")
      *
      * @param Transaction $transaction

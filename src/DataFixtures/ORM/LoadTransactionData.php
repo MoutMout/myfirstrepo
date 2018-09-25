@@ -20,7 +20,7 @@ class LoadTransactionData extends AbstractFixture implements OrderedFixtureInter
     {
         foreach ($this->getTransactions() as $data) {
             $transaction = new Transaction();
-            $transaction->setCard($data['card']);
+            $transaction->setCard($manager->getRepository('App:Card')->findOneById($data['card']));
             $transaction->setType($data['type']);
             $transaction->setIsCredit($data['isCredit']);
             $transaction->setDescription($data['description']);
@@ -38,7 +38,7 @@ class LoadTransactionData extends AbstractFixture implements OrderedFixtureInter
      */
     public function getOrder()
     {
-        return 5678;
+        return 3;
     }
 
     /**
