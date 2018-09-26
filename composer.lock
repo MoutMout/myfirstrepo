@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9c83b9f80d078f9467879dc48d94c2f",
+    "content-hash": "94e9d685d5ba097aa4e3d28e516463f3",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4762,16 +4762,16 @@
         },
         {
             "name": "wizards/rest-api",
-            "version": "0.5.2",
+            "version": "0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wizardstechnologies/php-rest-api.git",
-                "reference": "64165340bfdebedfb4a224da931d4abd96029cce"
+                "reference": "054d33a3d67dc6f74579ba60f301a93cac69e5b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wizardstechnologies/php-rest-api/zipball/64165340bfdebedfb4a224da931d4abd96029cce",
-                "reference": "64165340bfdebedfb4a224da931d4abd96029cce",
+                "url": "https://api.github.com/repos/wizardstechnologies/php-rest-api/zipball/054d33a3d67dc6f74579ba60f301a93cac69e5b4",
+                "reference": "054d33a3d67dc6f74579ba60f301a93cac69e5b4",
                 "shasum": ""
             },
             "require": {
@@ -4813,21 +4813,21 @@
                 }
             ],
             "description": "A set of services to help you create beautiful REST APIs",
-            "time": "2018-09-25T23:52:45+00:00"
+            "time": "2018-09-26T13:35:19+00:00"
         },
         {
             "name": "wizards/rest-bundle",
-            "version": "0.5.4",
+            "version": "0.6",
             "target-dir": "Wizards/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wizardstechnologies/rest-api-bundle.git",
-                "reference": "dc0d003519be07253a6e0515bd4bf942f65b0d84"
+                "reference": "1470561df7e5ba88b59aa3a92183ff3e167175cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wizardstechnologies/rest-api-bundle/zipball/dc0d003519be07253a6e0515bd4bf942f65b0d84",
-                "reference": "dc0d003519be07253a6e0515bd4bf942f65b0d84",
+                "url": "https://api.github.com/repos/wizardstechnologies/rest-api-bundle/zipball/1470561df7e5ba88b59aa3a92183ff3e167175cf",
+                "reference": "1470561df7e5ba88b59aa3a92183ff3e167175cf",
                 "shasum": ""
             },
             "require": {
@@ -4835,7 +4835,7 @@
                 "sensio/framework-extra-bundle": "^5.2",
                 "symfony/http-kernel": "^4.1",
                 "symfony/psr-http-message-bridge": "^1.1",
-                "wizards/rest-api": "0.5.2",
+                "wizards/rest-api": "0.6",
                 "zendframework/zend-diactoros": "^1.8"
             },
             "require-dev": {
@@ -4864,7 +4864,7 @@
                 "jsonapi",
                 "rest"
             ],
-            "time": "2018-09-26T00:32:05+00:00"
+            "time": "2018-09-26T13:43:16+00:00"
         },
         {
             "name": "zendframework/zend-code",
