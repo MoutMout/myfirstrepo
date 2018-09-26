@@ -6,10 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use WizardsRest\Annotation\Embeddable;
 use WizardsRest\Annotation\Exposable;
 use Symfony\Component\Validator\Constraints as Assert;
+use WizardsRest\Annotation\Type;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="transaction")
+ *
+ * @Type("transactions")
  */
 class Transaction
 {

@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Routing\Annotation\Route;
+use Wizards\RestBundle\Controller\JsonControllerTrait;
 use WizardsRest\CollectionManager;
-use Mcfedr\JsonFormBundle\Controller\JsonControllerTrait;
 
 /**
  * Class CardController.
@@ -45,6 +45,10 @@ class CardController extends Controller
      * )
      *
      * @Route("", methods={"GET"})
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return \Traversable
      */
     public function getCardsAction(ServerRequestInterface $request): \Traversable
     {

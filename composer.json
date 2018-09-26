@@ -36,11 +36,9 @@
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "nelmio/api-doc-bundle": "^3",
-        "wizards/rest-bundle": "0.4.3",
-        "doctrine/annotations": "^1.6",
+        "wizards/rest-bundle": "0.5.4",
         "doctrine/common": "^2.9",
-        "pagerfanta/pagerfanta": "^2.0",
-        "mcfedr/json-form": "^4.4"
+        "pagerfanta/pagerfanta": "^2.0"
     },
     "require-dev": {
         "phing/phing": "^2.16",

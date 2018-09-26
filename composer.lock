@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef3a0ac9bbc42b8c1c1a00cacacd57c5",
+    "content-hash": "b9c83b9f80d078f9467879dc48d94c2f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1439,57 +1439,6 @@
                 "rest"
             ],
             "time": "2017-06-12T11:04:56+00:00"
-        },
-        {
-            "name": "mcfedr/json-form",
-            "version": "4.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mcfedr/json-form.git",
-                "reference": "92256314fb26db8a30c46f8a370ae0ecdb56dad4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mcfedr/json-form/zipball/92256314fb26db8a30c46f8a370ae0ecdb56dad4",
-                "reference": "92256314fb26db8a30c46f8a370ae0ecdb56dad4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5",
-                "symfony/form": "^3.0|^4.0",
-                "symfony/framework-bundle": "^3.0|^4.0",
-                "symfony/validator": "^3.0|^4.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.1",
-                "phpunit/phpunit": "^4.0|^5.3",
-                "sensio/framework-extra-bundle": "^3.0|^4.0|^5.0",
-                "symfony/browser-kit": "^3.0|^4.0",
-                "symfony/monolog-bundle": "^3.0|^4.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Mcfedr\\JsonFormBundle\\": "src/Mcfedr/JsonFormBundle"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fred Cox",
-                    "email": "mcfedr@gmail.com"
-                }
-            ],
-            "description": "A couple of helper files for handling json with symfony forms",
-            "keywords": [
-                "Forms",
-                "json",
-                "symfony"
-            ],
-            "time": "2018-07-24T07:55:18+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -4813,16 +4762,16 @@
         },
         {
             "name": "wizards/rest-api",
-            "version": "0.4",
+            "version": "0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wizardstechnologies/php-rest-api.git",
-                "reference": "8540cc97624fb2afac8104c2480455eb2b74477d"
+                "reference": "64165340bfdebedfb4a224da931d4abd96029cce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wizardstechnologies/php-rest-api/zipball/8540cc97624fb2afac8104c2480455eb2b74477d",
-                "reference": "8540cc97624fb2afac8104c2480455eb2b74477d",
+                "url": "https://api.github.com/repos/wizardstechnologies/php-rest-api/zipball/64165340bfdebedfb4a224da931d4abd96029cce",
+                "reference": "64165340bfdebedfb4a224da931d4abd96029cce",
                 "shasum": ""
             },
             "require": {
@@ -4864,21 +4813,21 @@
                 }
             ],
             "description": "A set of services to help you create beautiful REST APIs",
-            "time": "2018-09-25T02:55:56+00:00"
+            "time": "2018-09-25T23:52:45+00:00"
         },
         {
             "name": "wizards/rest-bundle",
-            "version": "0.4.3",
+            "version": "0.5.4",
             "target-dir": "Wizards/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wizardstechnologies/rest-api-bundle.git",
-                "reference": "0f886495f3bf7ad73fe7d862ca6e5d454d146d13"
+                "reference": "dc0d003519be07253a6e0515bd4bf942f65b0d84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wizardstechnologies/rest-api-bundle/zipball/0f886495f3bf7ad73fe7d862ca6e5d454d146d13",
-                "reference": "0f886495f3bf7ad73fe7d862ca6e5d454d146d13",
+                "url": "https://api.github.com/repos/wizardstechnologies/rest-api-bundle/zipball/dc0d003519be07253a6e0515bd4bf942f65b0d84",
+                "reference": "dc0d003519be07253a6e0515bd4bf942f65b0d84",
                 "shasum": ""
             },
             "require": {
@@ -4886,7 +4835,7 @@
                 "sensio/framework-extra-bundle": "^5.2",
                 "symfony/http-kernel": "^4.1",
                 "symfony/psr-http-message-bridge": "^1.1",
-                "wizards/rest-api": "0.4",
+                "wizards/rest-api": "0.5.2",
                 "zendframework/zend-diactoros": "^1.8"
             },
             "require-dev": {
@@ -4915,7 +4864,7 @@
                 "jsonapi",
                 "rest"
             ],
-            "time": "2018-09-25T03:36:57+00:00"
+            "time": "2018-09-26T00:32:05+00:00"
         },
         {
             "name": "zendframework/zend-code",

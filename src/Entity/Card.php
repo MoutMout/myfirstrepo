@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use WizardsRest\Annotation\Exposable;
 use Symfony\Component\Validator\Constraints as Assert;
+use WizardsRest\Annotation\Type;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="card")
+ *
+ * @Type("cards")
  */
 class Card
 {

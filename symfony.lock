@@ -143,9 +143,6 @@
     "league/fractal": {
         "version": "0.17.0"
     },
-    "mcfedr/json-form": {
-        "version": "4.4.0"
-    },
     "monolog/monolog": {
         "version": "1.23.0"
     },

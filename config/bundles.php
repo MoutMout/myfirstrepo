@@ -15,5 +15,4 @@ return [
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Bigz\ApiDocDumperBundle\BigzApiDocDumperBundle::class => ['dev' => true, 'test' => true],
     Wizards\RestBundle\WizardsRestBundle::class => ['all' => true],
-    Mcfedr\JsonFormBundle\McfedrJsonFormBundle::class => ['all' => true],
 ];

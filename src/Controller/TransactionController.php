@@ -40,6 +40,10 @@ class TransactionController extends Controller
      *     description="Paginated$transaction collection",
      * @SWG\Items(@Model(type=Transaction::class))
      * )
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return \Traversable
      */
     public function getTransactionsAction(ServerRequestInterface $request): \Traversable
     {

@@ -41,6 +41,10 @@ class RestaurantController extends Controller
      *     description="Paginated restaurant collection",
      * @SWG\Items(@Model(type=Restaurant::class))
      * )
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return \Traversable
      */
     public function getRestaurantsAction(ServerRequestInterface $request): \Traversable
     {
