@@ -37,8 +37,14 @@ class TransactionController extends Controller
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Paginated$transaction collection",
-     * @SWG\Items(@Model(type=Transaction::class))
+     *     description="Paginated transaction collection",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data", @SWG\Items(
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=Transaction::class))
+     *          ))
+     *    )
      * )
      *
      * @param ServerRequestInterface $request
@@ -55,7 +61,17 @@ class TransactionController extends Controller
      *
      * @Route("/{id}", methods={"GET"})
      *
-     * @SWG\Response(response=200, description="Get a transaction", @Model(type=Transaction::class))
+     * @SWG\Response(
+     *     response=200,
+     *     description="Get a transaction",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data",
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=Transaction::class))
+     *          )
+     *    )
+     * )
      * @SWG\Response(response=404, description="Transaction not found")
      *
      * @param Transaction $transaction

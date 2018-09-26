@@ -39,7 +39,13 @@ class RestaurantController extends Controller
      * @SWG\Response(
      *     response=200,
      *     description="Paginated restaurant collection",
-     * @SWG\Items(@Model(type=Restaurant::class))
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data", @SWG\Items(
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
+     *          ))
+     *    )
      * )
      *
      * @param ServerRequestInterface $request
@@ -56,7 +62,17 @@ class RestaurantController extends Controller
      *
      * @Route("/{id}", methods={"GET"})
      *
-     * @SWG\Response(response=200, description="Get a restaurant", @Model(type=Restaurant::class))
+     * @SWG\Response(
+     *     response=200,
+     *     description="Get a restaurant",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data",
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
+     *          )
+     *    )
+     * )
      * @SWG\Response(response=404, description="Restaurant not found")
      *
      * @param Restaurant $restaurant

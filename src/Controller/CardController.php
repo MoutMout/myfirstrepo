@@ -41,7 +41,13 @@ class CardController extends Controller
      * @SWG\Response(
      *     response=200,
      *     description="Paginated card collection",
-     * @SWG\Items(@Model(type=Card::class))
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data", @SWG\Items(
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=Card::class))
+     *          ))
+     *    )
      * )
      *
      * @Route("", methods={"GET"})
@@ -60,7 +66,17 @@ class CardController extends Controller
      *
      * @Route("/{id}", methods={"GET"})
      *
-     * @SWG\Response(response=200, description="Get a card", @Model(type=Card::class))
+     * @SWG\Response(
+     *     response=200,
+     *     description="Get a card",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data",
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=Card::class))
+     *          )
+     *    )
+     * )
      * @SWG\Response(response=404, description="Card not found")
      *
      * @param Card $card
@@ -86,7 +102,17 @@ class CardController extends Controller
      *          @SWG\Property(property="card", ref=@Model(type=CardType::class))
      *     )
      * )
-     * @SWG\Response(response=200, description="Card updated", @Model(type=Card::class))
+     * @SWG\Response(
+     *     response=200,
+     *     description="Get a card",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data",
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=Card::class))
+     *          )
+     *    )
+     * )
      * @SWG\Response(response=400, description="Invalid Request")
      * @SWG\Response(response=404, description="Card not found")
      *

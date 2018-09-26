@@ -9,7 +9,7 @@
         "application/json"
     ],
     "produces": [
-        "application/json"
+        "application/vnd.api+json"
     ],
     "paths": {
         "/cards": {
@@ -19,9 +19,24 @@
                     "200": {
                         "description": "Paginated card collection",
                         "schema": {
-                            "items": {
-                                "$ref": "#/definitions/Card"
-                            }
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Card"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
                         }
                     }
                 }
@@ -43,7 +58,22 @@
                     "200": {
                         "description": "Get a card",
                         "schema": {
-                            "$ref": "#/definitions/Card"
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Card"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "404": {
@@ -77,9 +107,24 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Card updated",
+                        "description": "Get a card",
                         "schema": {
-                            "$ref": "#/definitions/Card"
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Card"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "400": {
@@ -91,46 +136,6 @@
                 }
             }
         },
-        "/transactions": {
-            "get": {
-                "summary": "Get all transactions.",
-                "responses": {
-                    "200": {
-                        "description": "Paginated$transaction collection",
-                        "schema": {
-                            "items": {
-                                "$ref": "#/definitions/Transaction"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/transactions/{id}": {
-            "get": {
-                "summary": "Get a Transaction.",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string",
-                        "x-example": "1"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get a transaction",
-                        "schema": {
-                            "$ref": "#/definitions/Transaction"
-                        }
-                    },
-                    "404": {
-                        "description": "Transaction not found"
-                    }
-                }
-            }
-        },
         "/restaurants": {
             "get": {
                 "summary": "Get all restaurants.",
@@ -138,9 +143,24 @@
                     "200": {
                         "description": "Paginated restaurant collection",
                         "schema": {
-                            "items": {
-                                "$ref": "#/definitions/Restaurant"
-                            }
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Restaurant"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
                         }
                     }
                 }
@@ -162,11 +182,96 @@
                     "200": {
                         "description": "Get a restaurant",
                         "schema": {
-                            "$ref": "#/definitions/Restaurant"
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Restaurant"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "404": {
                         "description": "Restaurant not found"
+                    }
+                }
+            }
+        },
+        "/transactions": {
+            "get": {
+                "summary": "Get all transactions.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated transaction collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Transaction"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions/{id}": {
+            "get": {
+                "summary": "Get a Transaction.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a transaction",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Transaction"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Transaction not found"
                     }
                 }
             }
@@ -265,6 +370,34 @@
             },
             "type": "object"
         },
+        "Restaurant": {
+            "required": [
+                "name",
+                "address",
+                "latitude",
+                "longitude"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float"
+                }
+            },
+            "type": "object"
+        },
         "Transaction": {
             "required": [
                 "type",
@@ -294,34 +427,6 @@
                     "format": "date-time"
                 },
                 "value": {
-                    "type": "number",
-                    "format": "float"
-                }
-            },
-            "type": "object"
-        },
-        "Restaurant": {
-            "required": [
-                "name",
-                "address",
-                "latitude",
-                "longitude"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "address": {
-                    "type": "string"
-                },
-                "latitude": {
-                    "type": "number",
-                    "format": "float"
-                },
-                "longitude": {
                     "type": "number",
                     "format": "float"
                 }
