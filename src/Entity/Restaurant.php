@@ -3,16 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
+use WizardsRest\Annotation\Exposable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="restaurant")
- * @ORM\Entity(repositoryClass="App\Repository\RestaurantRepository")
- *
- * @ExclusionPolicy("All")
  */
 class Restaurant
 {
@@ -23,7 +19,7 @@ class Restaurant
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Expose
+     * @Exposable
      */
     private $id;
 
@@ -34,7 +30,7 @@ class Restaurant
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $name;
 
@@ -45,7 +41,7 @@ class Restaurant
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $address;
 
@@ -56,7 +52,7 @@ class Restaurant
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $latitude;
 
@@ -67,7 +63,7 @@ class Restaurant
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $longitude;
 

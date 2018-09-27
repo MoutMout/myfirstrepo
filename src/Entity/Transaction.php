@@ -3,16 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
+use WizardsRest\Annotation\Embeddable;
+use WizardsRest\Annotation\Exposable;
 use Symfony\Component\Validator\Constraints as Assert;
-use \DateTime;
+use WizardsRest\Annotation\Type;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="transaction")
  *
- * @ExclusionPolicy("All")
+ * @Type("transactions")
  */
 class Transaction
 {
@@ -23,20 +23,16 @@ class Transaction
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Expose
+     * @Exposable
      */
     private $id;
 
     /**
-     * @var int
+     * @var Card
      *
-     * @ORM\Column(name="card_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Card")
      *
-     * @ORM\OneToOne(
-     *     targetEntity="App\Entity\Card",
-     * )
-     *
-     * @Expose
+     * @Embeddable()
      */
     private $card;
 
@@ -47,7 +43,7 @@ class Transaction
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $type;
 
@@ -58,7 +54,7 @@ class Transaction
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $isCredit;
 
@@ -69,7 +65,7 @@ class Transaction
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $description;
 
@@ -80,7 +76,7 @@ class Transaction
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $date;
 
@@ -91,7 +87,7 @@ class Transaction
      *
      * @Assert\NotBlank()
      *
-     * @Expose
+     * @Exposable
      */
     private $value;
 
@@ -112,7 +108,7 @@ class Transaction
      *
      * @return $this
      */
-    public function setCard(int $card)
+    public function setCard(Card $card)
     {
         $this->card = $card;
 
@@ -188,7 +184,7 @@ class Transaction
     }
 
     /**
-     * @return int
+     * @return Card
      */
     public function getCard()
     {
