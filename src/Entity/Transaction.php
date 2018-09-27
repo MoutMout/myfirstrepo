@@ -70,7 +70,7 @@ class Transaction
     private $description;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
      *
@@ -152,7 +152,7 @@ class Transaction
     }
 
     /**
-     * @param DateTime $date
+     * @param \DateTime $date
      *
      * @return $this
      */
@@ -216,7 +216,7 @@ class Transaction
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getDate()
     {
