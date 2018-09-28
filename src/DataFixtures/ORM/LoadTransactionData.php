@@ -111,6 +111,22 @@ class LoadTransactionData extends AbstractFixture implements OrderedFixtureInter
                 'date' => new DateTime('2018-09-01 14:00:00'),
                 'value' => 50,
             ],
+            [
+                'card' => '1',
+                'type' => 'debit',
+                'isCredit' => 'false',
+                'description' => 'Carrefour Restaurant',
+                'date' => new DateTime('2018-09-12 14:35:48'),
+                'value' => 12.39,
+            ],
+            [
+                'card' => '1',
+                'type' => 'debit',
+                'isCredit' => 'false',
+                'description' => 'Boulangerie Papatissier',
+                'date' => new DateTime('2018-09-01 10:21:12'),
+                'value' => 7.50,
+            ],
         ];
     }
 }
