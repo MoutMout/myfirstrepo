@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a82b8c568d3d5998c30450bbccae69d0",
+    "content-hash": "d4082216fa16f0c0d81ac687db85793f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4819,17 +4819,17 @@
         },
         {
             "name": "wizards/rest-bundle",
-            "version": "0.6.3",
+            "version": "0.6.4",
             "target-dir": "Wizards/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wizardstechnologies/rest-api-bundle.git",
-                "reference": "f9112c9b2a8417a8d3fac28896b6cce94304cf76"
+                "reference": "71e0e848527fe831471125c6d5daf0d652ebb289"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wizardstechnologies/rest-api-bundle/zipball/f9112c9b2a8417a8d3fac28896b6cce94304cf76",
-                "reference": "f9112c9b2a8417a8d3fac28896b6cce94304cf76",
+                "url": "https://api.github.com/repos/wizardstechnologies/rest-api-bundle/zipball/71e0e848527fe831471125c6d5daf0d652ebb289",
+                "reference": "71e0e848527fe831471125c6d5daf0d652ebb289",
                 "shasum": ""
             },
             "require": {
@@ -4866,7 +4866,7 @@
                 "jsonapi",
                 "rest"
             ],
-            "time": "2018-10-02T12:12:59+00:00"
+            "time": "2018-10-02T22:33:10+00:00"
         },
         {
             "name": "zendframework/zend-code",
