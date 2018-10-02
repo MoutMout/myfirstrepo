@@ -1540,6 +1540,30 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 'longitude' => 2.3657810,
                 'latitude' => 48.871429,
             ],
+            [
+                'name' => "Malagueta",
+                'address' => "Alameda Araguaia, 1142",
+                'longitude' => -46.8510045,
+                'latitude' => -23.5005904,
+            ],
+            [
+                'name' => "Pallas Grill Restaurante",
+                'address' => "Calçada das Palmas, 77",
+                'longitude' => -46.8501516,
+                'latitude' => -23.4967999,
+            ],
+            [
+                'name' => "Restaurante America",
+                'address' => "Alameda Mamoré, 877",
+                'longitude' => -46.8516456,
+                'latitude' => -23.4930819,
+            ],
+            [
+                'name' => "Super Grill Gourmet",
+                'address' => "Alameda Mamoré, 481",
+                'longitude' => -46.8483652,
+                'latitude' => -23.4927301,
+            ],
         ];
     }
 }
