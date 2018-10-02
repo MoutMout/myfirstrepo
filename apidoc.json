@@ -12,6 +12,131 @@
         "application/vnd.api+json"
     ],
     "paths": {
+        "/accounts": {
+            "get": {
+                "summary": "Get all accounts.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated account collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Account"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}": {
+            "get": {
+                "summary": "Get a Account.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a account",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Account"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Account not found"
+                    }
+                }
+            }
+        },
+        "/activities": {
+            "get": {
+                "summary": "Get all activities.",
+                "responses": {
+                    "200": {
+                        "description": "activity collection",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Activity"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/activities/{id}": {
+            "get": {
+                "summary": "Get a Activity.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get an Activity",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Activity"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Activity not found"
+                    }
+                }
+            }
+        },
         "/cards": {
             "get": {
                 "summary": "Get all cards.",
@@ -132,6 +257,396 @@
                     },
                     "404": {
                         "description": "Card not found"
+                    }
+                }
+            }
+        },
+        "/invoices": {
+            "get": {
+                "summary": "Get all invoices.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated invoice collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Invoice"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/invoices/{id}": {
+            "get": {
+                "summary": "Get a Invoice.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get an invoice",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Invoice"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice not found"
+                    }
+                }
+            }
+        },
+        "/locations": {
+            "get": {
+                "summary": "Get all locations.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated location collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Location"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/locations/{id}": {
+            "get": {
+                "summary": "Get a Location.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a location",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Location"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Location not found"
+                    }
+                }
+            }
+        },
+        "/merchants": {
+            "get": {
+                "summary": "Get all merchants.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated merchant collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Merchant"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/merchants/{id}": {
+            "get": {
+                "summary": "Get a Merchant.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a merchant",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Merchant"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Merchant not found"
+                    }
+                }
+            }
+        },
+        "/organisations": {
+            "get": {
+                "summary": "Get all organisations.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated organisation collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Organisation"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/organisations/{id}": {
+            "get": {
+                "summary": "Get a Organisation.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a organisation",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Organisation"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Organisation not found"
+                    }
+                }
+            }
+        },
+        "/pos": {
+            "get": {
+                "summary": "Get all POS.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated POS collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Pos"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/pos/{id}": {
+            "get": {
+                "summary": "Get a POS.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a POS",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Pos"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "POS not found"
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "summary": "Get all products.",
+                "responses": {
+                    "200": {
+                        "description": "activity collection",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Product"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "summary": "Get a Product.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a product",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found"
                     }
                 }
             }
@@ -275,9 +790,181 @@
                     }
                 }
             }
+        },
+        "/users": {
+            "get": {
+                "summary": "Get all Users.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated transaction collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/User"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "summary": "Get an User.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get an User",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/User"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/user-roles": {
+            "get": {
+                "summary": "Get all user-roles.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated user-roles collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/UserRole"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/user-roles/{id}": {
+            "get": {
+                "summary": "Get an User_role.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get an User_role",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/UserRole"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "User_role not found"
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "Account": {
+            "required": [
+                "login",
+                "password"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Activity": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Card": {
             "required": [
                 "userId",
@@ -370,6 +1057,270 @@
             },
             "type": "object"
         },
+        "Invoice": {
+            "required": [
+                "issueDate",
+                "dueDate",
+                "amount",
+                "nbVoucherPurchases",
+                "nbCardPurchases",
+                "currency"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dueDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "amount": {
+                    "type": "integer"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "nbVoucherPurchases": {
+                    "type": "integer"
+                },
+                "nbCardPurchases": {
+                    "type": "integer"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "nbShipments": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "required": [
+                "name",
+                "address",
+                "postalCode",
+                "locality",
+                "houseNumber",
+                "phoneNumber",
+                "phoneNumberBis"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "locality": {
+                    "type": "string"
+                },
+                "houseNumber": {
+                    "type": "string"
+                },
+                "website": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "phoneNumberBis": {
+                    "type": "string"
+                },
+                "activity": {
+                    "$ref": "#/definitions/Activity"
+                },
+                "bisActivity": {
+                    "$ref": "#/definitions/Activity"
+                },
+                "terActivity": {
+                    "$ref": "#/definitions/Activity"
+                },
+                "wifi": {
+                    "type": "boolean"
+                },
+                "users": {
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "type": "array"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
+                },
+                "poss": {
+                    "items": {
+                        "$ref": "#/definitions/Pos"
+                    },
+                    "type": "array"
+                },
+                "pos": {
+                    "$ref": "#/definitions/Pos"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "merchant": {
+                    "$ref": "#/definitions/Merchant"
+                }
+            },
+            "type": "object"
+        },
+        "Merchant": {
+            "required": [
+                "companyId",
+                "address",
+                "postalCode",
+                "VATnumber"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "organisation": {
+                    "$ref": "#/definitions/Organisation"
+                },
+                "companyId": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "VATnumber": {
+                    "type": "integer"
+                },
+                "locations": {
+                    "items": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "type": "array"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "users": {
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "type": "array"
+                },
+                "contract": {
+                    "$ref": "#/definitions/Contract"
+                }
+            },
+            "type": "object"
+        },
+        "Organisation": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "merchants": {
+                    "items": {
+                        "$ref": "#/definitions/Merchant"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Pos": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "terminalId": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "bank": {
+                    "$ref": "#/definitions/Bank"
+                },
+                "device": {
+                    "$ref": "#/definitions/Device"
+                }
+            },
+            "type": "object"
+        },
+        "Product": {
+            "required": [
+                "name",
+                "imageUrl",
+                "description"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "activity": {
+                    "$ref": "#/definitions/Activity"
+                },
+                "offers": {
+                    "items": {
+                        "$ref": "#/definitions/MerchantProductOffer"
+                    },
+                    "type": "array"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Restaurant": {
             "required": [
                 "name",
@@ -429,6 +1380,247 @@
                 "value": {
                     "type": "number",
                     "format": "float"
+                }
+            },
+            "type": "object"
+        },
+        "User": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/definitions/UserRole"
+                },
+                "merchant": {
+                    "$ref": "#/definitions/Merchant"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "locations": {
+                    "items": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "type": "array"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "account": {
+                    "$ref": "#/definitions/Account"
+                }
+            },
+            "type": "object"
+        },
+        "UserRole": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Contract": {
+            "required": [
+                "file"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "merchant": {
+                    "$ref": "#/definitions/Merchant"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "contractDetails": {
+                    "items": {
+                        "$ref": "#/definitions/ContractDetails"
+                    },
+                    "type": "array"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Bank": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Device": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "MerchantProductOffer": {
+            "required": [
+                "name",
+                "description",
+                "type",
+                "bundleType",
+                "percentCost",
+                "fixedFeeAmount",
+                "fixedFeeCurrency"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "recommended": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "bundleType": {
+                    "type": "string"
+                },
+                "percentCost": {
+                    "type": "string"
+                },
+                "fixedFeeAmount": {
+                    "type": "integer"
+                },
+                "fixedFeeCurrency": {
+                    "type": "string"
+                },
+                "product": {
+                    "$ref": "#/definitions/Product"
+                },
+                "options": {
+                    "items": {
+                        "$ref": "#/definitions/MerchantProductOfferOption"
+                    },
+                    "type": "array"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ContractDetails": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "contract": {
+                    "$ref": "#/definitions/Contract"
+                },
+                "product": {
+                    "$ref": "#/definitions/Product"
+                },
+                "offer": {
+                    "$ref": "#/definitions/MerchantProductOffer"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "deletedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "MerchantProductOfferOption": {
+            "required": [
+                "name",
+                "description",
+                "type",
+                "percentCost"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "percentCost": {
+                    "type": "string"
+                },
+                "offer": {
+                    "$ref": "#/definitions/MerchantProductOffer"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
                 }
             },
             "type": "object"

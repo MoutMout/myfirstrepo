@@ -38,3 +38,5 @@ behat.yml
 
 ## postgres files
 /data/postgres
+
+.idea

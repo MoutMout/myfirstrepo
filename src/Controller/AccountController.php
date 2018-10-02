@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Restaurant;
+use App\Entity\Account;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -11,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use WizardsRest\CollectionManager;
 
 /**
- * Class RestaurantController.
+ * Class AccountController.
  *
- * @Route("/restaurants")
+ * @Route("/accounts")
  */
-class RestaurantController extends Controller
+class AccountController extends Controller
 {
     /**
      * @var CollectionManager
@@ -33,18 +33,18 @@ class RestaurantController extends Controller
     }
 
     /**
-     * Get all restaurants.
+     * Get all accounts.
      *
      * @Route("", methods={"GET"})
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Paginated restaurant collection",
+     *     description="Paginated account collection",
      *     schema=@SWG\Schema(type="object",
      *          @SWG\Property(property="data", @SWG\Items(
      *              @SWG\Property(property="id", type="string"),
      *              @SWG\Property(property="type", type="string"),
-     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
+     *              @SWG\Property(property="attributes", ref=@Model(type=Account::class))
      *          ))
      *    )
      * )
@@ -53,35 +53,35 @@ class RestaurantController extends Controller
      *
      * @return \Traversable
      */
-    public function getRestaurantsAction(ServerRequestInterface $request): \Traversable
+    public function getAccountsAction(ServerRequestInterface $request): \Traversable
     {
-        return $this->rest->getPaginatedCollection(Restaurant::class, $request);
+        return $this->rest->getPaginatedCollection(Account::class, $request);
     }
 
     /**
-     * Get a Restaurant.
+     * Get a Account.
      *
      * @Route("/{id}", methods={"GET"})
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Get a restaurant",
+     *     description="Get a account",
      *     schema=@SWG\Schema(type="object",
      *          @SWG\Property(property="data",
      *              @SWG\Property(property="id", type="string"),
      *              @SWG\Property(property="type", type="string"),
-     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
+     *              @SWG\Property(property="attributes", ref=@Model(type=Account::class))
      *          )
      *    )
      * )
-     * @SWG\Response(response=404, description="Restaurant not found")
+     * @SWG\Response(response=404, description="Account not found")
      *
-     * @param Restaurant $restaurant
+     * @param Account $account
      *
-     * @return Restaurant
+     * @return Account
      */
-    public function getRestaurantAction(Restaurant $restaurant)
+    public function getAccountAction(Account $account)
     {
-        return $restaurant;
+        return $account;
     }
 }

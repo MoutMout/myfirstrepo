@@ -2,49 +2,49 @@
 
 namespace App\Controller;
 
-use App\Entity\Restaurant;
+use App\Entity\UserRole;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use WizardsRest\CollectionManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
-use Symfony\Component\Routing\Annotation\Route;
-use WizardsRest\CollectionManager;
 
 /**
- * Class RestaurantController.
+ * Class UserRoleController.
  *
- * @Route("/restaurants")
+ * @Route("/user-roles")
  */
-class RestaurantController extends Controller
+class UserRoleController extends Controller
 {
     /**
      * @var CollectionManager
      */
-    private $rest;
+    private $userRole;
 
     /**
      * ArtistController constructor.
      *
-     * @param CollectionManager $rest
+     * @param CollectionManager $userRole
      */
-    public function __construct(CollectionManager $rest)
+    public function __construct(CollectionManager $userRole)
     {
-        $this->rest = $rest;
+        $this->userRole = $userRole;
     }
 
     /**
-     * Get all restaurants.
+     * Get all user-roles.
      *
      * @Route("", methods={"GET"})
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Paginated restaurant collection",
+     *     description="Paginated user-roles collection",
      *     schema=@SWG\Schema(type="object",
      *          @SWG\Property(property="data", @SWG\Items(
      *              @SWG\Property(property="id", type="string"),
      *              @SWG\Property(property="type", type="string"),
-     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
+     *              @SWG\Property(property="attributes", ref=@Model(type=UserRole::class))
      *          ))
      *    )
      * )
@@ -53,35 +53,35 @@ class RestaurantController extends Controller
      *
      * @return \Traversable
      */
-    public function getRestaurantsAction(ServerRequestInterface $request): \Traversable
+    public function getUserRolesAction(ServerRequestInterface $request): \Traversable
     {
-        return $this->rest->getPaginatedCollection(Restaurant::class, $request);
+        return $this->userRole->getPaginatedCollection(UserRole::class, $request);
     }
 
     /**
-     * Get a Restaurant.
+     * Get an User_role.
      *
      * @Route("/{id}", methods={"GET"})
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Get a restaurant",
+     *     description="Get an User_role",
      *     schema=@SWG\Schema(type="object",
      *          @SWG\Property(property="data",
      *              @SWG\Property(property="id", type="string"),
      *              @SWG\Property(property="type", type="string"),
-     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
+     *              @SWG\Property(property="attributes", ref=@Model(type=UserRole::class))
      *          )
      *    )
      * )
-     * @SWG\Response(response=404, description="Restaurant not found")
+     * @SWG\Response(response=404, description="User_role not found")
      *
-     * @param Restaurant $restaurant
+     * @param UserRole $userRole
      *
-     * @return Restaurant
+     * @return UserRole
      */
-    public function getRestaurantAction(Restaurant $restaurant)
+    public function getUserRoleAction(UserRole $userRole)
     {
-        return $restaurant;
+        return $userRole;
     }
 }
