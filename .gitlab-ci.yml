@@ -1,4 +1,4 @@
-image: 'docker.wdg.cloud/sodexo/infra/ci-php'
+image: 'brs-registry-prd.sodexo.com/sodexo/infra/ci-php'
 
 stages:
   - test
