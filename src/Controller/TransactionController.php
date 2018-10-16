@@ -12,6 +12,7 @@ use Swagger\Annotations as SWG;
 
 /**
  * Class TransactionController.
+ *
  * @Route("/transactions")
  */
 class TransactionController extends Controller
@@ -23,6 +24,7 @@ class TransactionController extends Controller
 
     /**
      * ArtistController constructor.
+     *
      * @param CollectionManager $rest
      */
     public function __construct(CollectionManager $rest)

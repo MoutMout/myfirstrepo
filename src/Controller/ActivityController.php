@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Restaurant;
+use App\Entity\Activity;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -11,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use WizardsRest\CollectionManager;
 
 /**
- * Class RestaurantController.
+ * Class ActivityController.
  *
- * @Route("/restaurants")
+ * @Route("/activities")
  */
-class RestaurantController extends Controller
+class ActivityController extends Controller
 {
     /**
      * @var CollectionManager
@@ -33,55 +33,49 @@ class RestaurantController extends Controller
     }
 
     /**
-     * Get all restaurants.
+     * Get all activities.
      *
      * @Route("", methods={"GET"})
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Paginated restaurant collection",
-     *     schema=@SWG\Schema(type="object",
-     *          @SWG\Property(property="data", @SWG\Items(
-     *              @SWG\Property(property="id", type="string"),
-     *              @SWG\Property(property="type", type="string"),
-     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
-     *          ))
-     *    )
+     *     description="activity collection",
+     * @SWG\Items(@Model(type=Activity::class))
      * )
      *
      * @param ServerRequestInterface $request
      *
      * @return \Traversable
      */
-    public function getRestaurantsAction(ServerRequestInterface $request): \Traversable
+    public function getActivitiesAction(ServerRequestInterface $request): \Traversable
     {
-        return $this->rest->getPaginatedCollection(Restaurant::class, $request);
+        return $this->rest->getPaginatedCollection(Activity::class, $request);
     }
 
     /**
-     * Get a Restaurant.
+     * Get a Activity.
      *
      * @Route("/{id}", methods={"GET"})
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Get a restaurant",
+     *     description="Get an Activity",
      *     schema=@SWG\Schema(type="object",
      *          @SWG\Property(property="data",
      *              @SWG\Property(property="id", type="string"),
      *              @SWG\Property(property="type", type="string"),
-     *              @SWG\Property(property="attributes", ref=@Model(type=Restaurant::class))
+     *              @SWG\Property(property="attributes", ref=@Model(type=Activity::class))
      *          )
      *    )
      * )
-     * @SWG\Response(response=404, description="Restaurant not found")
+     * @SWG\Response(response=404, description="Activity not found")
      *
-     * @param Restaurant $restaurant
+     * @param Activity $activity
      *
-     * @return Restaurant
+     * @return Activity
      */
-    public function getRestaurantAction(Restaurant $restaurant)
+    public function getActivityAction(Activity $activity)
     {
-        return $restaurant;
+        return $activity;
     }
 }

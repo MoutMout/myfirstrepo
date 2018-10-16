@@ -128,7 +128,7 @@ class Transaction
     }
 
     /**
-     * @param boolean $isCredit
+     * @param bool $isCredit
      *
      * @return $this
      */
@@ -200,7 +200,7 @@ class Transaction
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getIsCredit()
     {
@@ -220,7 +220,6 @@ class Transaction
      */
     public function getDate()
     {
-
         return $this->date;
     }
 

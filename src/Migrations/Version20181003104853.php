@@ -8,12 +8,12 @@ use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
 /**
- * Create the table for the transactions.
+ * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180920145749 extends AbstractMigration
+final class Version20181003104853 extends AbstractMigration
 {
     /**
-     * Create trasactions table.
+     * Create Table.
      *
      * @param Schema $schema
      *
@@ -25,12 +25,14 @@ final class Version20180920145749 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('CREATE SEQUENCE transaction_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE transaction (id INT NOT NULL, card_id INT NOT NULL, type VARCHAR(255) NOT NULL, isCredit BOOLEAN NOT NULL, description VARCHAR(255) NOT NULL, date TIMESTAMP NOT NULL, value DOUBLE PRECISION NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE SEQUENCE invoice_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE TABLE invoice (id INT NOT NULL, location_id INT DEFAULT NULL, issue_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, due_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, amount INT NOT NULL, nb_voucher_purchases INT NOT NULL, nb_card_purchases INT NOT NULL, currency VARCHAR(255) NOT NULL, nb_shipments INT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_9065174464D218E ON invoice (location_id)');
+        $this->addSql('ALTER TABLE invoice ADD CONSTRAINT FK_9065174464D218E FOREIGN KEY (location_id) REFERENCES location (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
     /**
-     * Remove transactions table.
+     * Remove table.
      *
      * @param Schema $schema
      *
@@ -43,7 +45,7 @@ final class Version20180920145749 extends AbstractMigration
         $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP SEQUENCE transaction_id_seq CASCADE');
-        $this->addSql('DROP TABLE transaction');
+        $this->addSql('DROP SEQUENCE invoice_id_seq CASCADE');
+        $this->addSql('DROP TABLE invoice');
     }
 }

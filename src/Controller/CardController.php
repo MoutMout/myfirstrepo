@@ -15,6 +15,7 @@ use WizardsRest\CollectionManager;
 
 /**
  * Class CardController.
+ *
  * @Route("/cards")
  */
 class CardController extends Controller
@@ -28,6 +29,7 @@ class CardController extends Controller
 
     /**
      * ArtistController constructor.
+     *
      * @param CollectionManager $rest
      */
     public function __construct(CollectionManager $rest)

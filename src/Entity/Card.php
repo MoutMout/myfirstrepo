@@ -186,7 +186,7 @@ class Card
     }
 
     /**
-     * @param boolean $isActive
+     * @param bool $isActive
      *
      * @return $this
      */
@@ -286,7 +286,7 @@ class Card
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getIsActive()
     {
@@ -298,7 +298,6 @@ class Card
      */
     public function getExpireAt()
     {
-
         return $this->expireAt;
     }
 
