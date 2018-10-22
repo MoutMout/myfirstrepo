@@ -2,6 +2,7 @@ image: 'brs-registry-prd.sodexo.com/sodexo/infra/ci-php'
 
 stages:
   - test
+  - release
 
 services:
   - camptocamp/postgres:10
@@ -11,17 +12,32 @@ variables:
   POSTGRES_PASSWORD: ci_pass
   POSTGRES_DB: ci_db
   DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@camptocamp-postgres/${POSTGRES_DB}"
+  CONTAINER_TAG: brs-registry-prd.sodexo.com/$CI_PROJECT_PATH:$CI_COMMIT_REF_SLUG
+  DOCKER_DRIVER: overlay2
 
 cache:
   paths:
     - vendor/*
     - node_modules/*
 
-before_script:
-  - make install
-
 test:
   stage: test
   script:
+    - make install
     - make analysis
     - make test
+
+release:
+  image: docker:stable
+  services:
+    - docker:dind
+  stage: release
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN brs-registry-prd.sodexo.com
+    - docker pull $CONTAINER_TAG || true
+    - docker build --cache-from $CONTAINER_TAG --tag $CONTAINER_TAG  .
+    - docker push $CONTAINER_TAG
+  only:
+    - master
+    - staging
+    - production
