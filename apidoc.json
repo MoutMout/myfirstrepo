@@ -721,6 +721,76 @@
                 }
             }
         },
+        "/stores": {
+            "get": {
+                "summary": "Get all stores.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated store collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Store"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/stores/{id}": {
+            "get": {
+                "summary": "Get a Store.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a store",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Store"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Store not found"
+                    }
+                }
+            }
+        },
         "/transactions": {
             "get": {
                 "summary": "Get all transactions.",
@@ -1178,6 +1248,15 @@
                 },
                 "merchant": {
                     "$ref": "#/definitions/Merchant"
+                },
+                "invoices": {
+                    "items": {
+                        "$ref": "#/definitions/Invoice"
+                    },
+                    "type": "array"
+                },
+                "invoice": {
+                    "$ref": "#/definitions/Invoice"
                 }
             },
             "type": "object"
@@ -1217,6 +1296,9 @@
                     },
                     "type": "array"
                 },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
                 "createdAt": {
                     "type": "integer"
                 },
@@ -1228,6 +1310,9 @@
                         "$ref": "#/definitions/User"
                     },
                     "type": "array"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
                 },
                 "contract": {
                     "$ref": "#/definitions/Contract"
@@ -1337,6 +1422,38 @@
                 },
                 "address": {
                     "type": "string"
+                },
+                "latitude": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float"
+                }
+            },
+            "type": "object"
+        },
+        "Store": {
+            "required": [
+                "name",
+                "address",
+                "countryId",
+                "latitude",
+                "longitude"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "countryId": {
+                    "type": "integer"
                 },
                 "latitude": {
                     "type": "number",
