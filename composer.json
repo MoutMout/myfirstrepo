@@ -39,7 +39,8 @@
         "nelmio/api-doc-bundle": "^3",
         "wizards/rest-bundle": "0.6.4",
         "doctrine/common": "^2.9",
-        "pagerfanta/pagerfanta": "^2.0"
+        "pagerfanta/pagerfanta": "^2.0",
+        "symfony/apache-pack": "^1.0"
     },
     "require-dev": {
         "phing/phing": "^2.16",
