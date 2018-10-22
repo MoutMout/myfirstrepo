@@ -822,6 +822,28 @@
             },
             "post": {
                 "summary": "Create a User.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "User to create",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/User"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Get a transaction",

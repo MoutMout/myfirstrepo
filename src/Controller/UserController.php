@@ -90,7 +90,19 @@ class UserController extends Controller
      * Create a User.
      *
      * @Route("", methods={"POST"})
-     *
+     * 
+     * @SWG\Parameter(
+     *     name="body",
+     *     in="body",
+     *     description="User to create",
+     *     required=true,
+     *     @SWG\Schema(
+     *       @SWG\Property(property="data",
+     *         @SWG\Property(property="type", type="string"),
+     *         @SWG\Property(property="attributes", ref=@Model(type=User::class))
+     *     )
+     * )
+     * )
      * @SWG\Response(
      *     response=200,
      *     description="Get a transaction",
@@ -112,6 +124,7 @@ class UserController extends Controller
     {
         $data = $request->getContent();
         $json = json_decode($data, true);
+        var_dump($json);exit;
         $manager = $this->getDoctrine()->getManager();
 
         $user = new User();
@@ -119,7 +132,7 @@ class UserController extends Controller
         $user->setLastname($json['data']['attributes']['lastName']);
         $user->setEmail($json['data']['attributes']['email']);
         $user->setPhone($json['data']['attributes']['phone']);
-        $user->setRole($manager->getRepository('App:UserRole')->findOneById($json['data']['attributes']['role']));
+        $user->setRole($manager->getRepository('App:UserRole')->findOneById($json['data']['relationships']['role']['id']));
         $user->setMerchant($manager->getRepository('App:Merchant')->findOneById(1));
         $user->setCreatedAt(20181011);
         $user->setUpdatedAt(20181018);
