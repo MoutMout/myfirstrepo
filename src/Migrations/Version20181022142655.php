@@ -10,6 +10,15 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20181022142655 extends AbstractMigration
 {
+
+    /**
+     * Create Table.
+     *
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
+     */
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
@@ -90,6 +99,14 @@ final class Version20181022142655 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_5E9E89CB6796D554 ON location (merchant_id)');
     }
 
+    /**
+     * Remove table.
+     *
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
+     */
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs

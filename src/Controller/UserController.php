@@ -104,7 +104,7 @@ class UserController extends Controller
      * )
      * @SWG\Response(response=404, description="User not found")
      *
-     * @param User $user
+     * @param Request $request
      *
      * @return User
      */
@@ -115,7 +115,6 @@ class UserController extends Controller
         $manager = $this->getDoctrine()->getManager();
 
         $user = new User();
-       
         $user->setFirstname($json['data']['attributes']['firstName']);
         $user->setLastname($json['data']['attributes']['lastName']);
         $user->setEmail($json['data']['attributes']['email']);
@@ -130,8 +129,4 @@ class UserController extends Controller
 
         return $user;
     }
-
-
-    
-
 }

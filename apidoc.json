@@ -819,6 +819,35 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Create a User.",
+                "responses": {
+                    "200": {
+                        "description": "Get a transaction",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/User"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/users/{id}": {
@@ -1178,6 +1207,15 @@
                 },
                 "merchant": {
                     "$ref": "#/definitions/Merchant"
+                },
+                "invoices": {
+                    "items": {
+                        "$ref": "#/definitions/Invoice"
+                    },
+                    "type": "array"
+                },
+                "invoice": {
+                    "$ref": "#/definitions/Invoice"
                 }
             },
             "type": "object"
@@ -1217,6 +1255,9 @@
                     },
                     "type": "array"
                 },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
                 "createdAt": {
                     "type": "integer"
                 },
@@ -1228,6 +1269,9 @@
                         "$ref": "#/definitions/User"
                     },
                     "type": "array"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
                 },
                 "contract": {
                     "$ref": "#/definitions/Contract"
