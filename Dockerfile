@@ -32,4 +32,5 @@ COPY --chown=www-data . .
 USER www-data
 RUN composer install --no-dev
 
+USER root
 EXPOSE 80
