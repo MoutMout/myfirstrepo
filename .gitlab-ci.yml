@@ -3,6 +3,7 @@ image: 'brs-registry-prd.sodexo.com/sodexo/infra/ci-php'
 stages:
   - test
   - release
+  - notify
 
 services:
   - camptocamp/postgres:10
@@ -41,3 +42,9 @@ release:
     - master
     - staging
     - production
+
+notify-az-sandbox:
+  stage: notify
+  script:
+    - curl -H 'Content-Type: application/json' -X POST -d '{}' "https://${AZ_WEBHOOK_SANDBOX_USER}:${AZ_WEBHOOK_SANDBOX_PASSWORD}@as-mock-api.scm.azurewebsites.net/docker/hook"
+  only: master
