@@ -85,4 +85,53 @@ class UserController extends Controller
     {
         return $user;
     }
+
+    /**
+     * Create a User.
+     *
+     * @Route("", methods={"POST"})
+     *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Get a transaction",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data",
+     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="type", type="string"),
+     *              @SWG\Property(property="attributes", ref=@Model(type=User::class))
+     *          )
+     *    )
+     * )
+     * @SWG\Response(response=404, description="User not found")
+     *
+     * @param User $user
+     *
+     * @return User
+     */
+    public function create(Request $request)
+    {
+        $data = $request->getContent();
+        $json = json_decode($data, true);
+        $manager = $this->getDoctrine()->getManager();
+
+        $user = new User();
+       
+        $user->setFirstname($json['data']['attributes']['firstName']);
+        $user->setLastname($json['data']['attributes']['lastName']);
+        $user->setEmail($json['data']['attributes']['email']);
+        $user->setPhone($json['data']['attributes']['phone']);
+        $user->setRole($manager->getRepository('App:UserRole')->findOneById($json['data']['attributes']['role']));
+        $user->setMerchant($manager->getRepository('App:Merchant')->findOneById(1));
+        $user->setCreatedAt(20181011);
+        $user->setUpdatedAt(20181018);
+
+        $manager->persist($user);
+        $manager->flush();
+
+        return $user;
+    }
+
+
+    
+
 }
