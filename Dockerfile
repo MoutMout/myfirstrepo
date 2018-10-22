@@ -17,6 +17,9 @@ ENV APP_SECRET    'dev'
 # Computed from above vars
 ENV DATABASE_URL 'postgres://${POSTGRES_USER}:${POSTGRES_PASS}@${POSTGRES_HOST}:${POSTGRES_PORT/${POSTGRES_DB}'
 
+COPY docker/php-env.conf /etc/apache2/conf-available/
+RUN a2enmod env
+RUN a2enconf php-env
 # Point DocumentRoot to the app's public folder
 ENV APP_HOME /app
 ENV APP_DOCUMENT_ROOT /app/public
