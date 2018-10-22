@@ -10,11 +10,7 @@ ifeq ($(PHING_IS_INSTALLED), 0)
 endif
 	$(PHING_BIN) install
 
-build:
-ifeq ($(PHING_IS_INSTALLED), 0)
-	composer install
-endif
-	$(PHING_BIN) install
+build: install
 	$(PHING_BIN) prepare
 
 docker-in:
