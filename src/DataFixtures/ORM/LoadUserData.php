@@ -19,8 +19,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     {
         foreach ($this->getUserDatas() as $data) {
             $user = new User();
-            $user->setFirstname($data['firstname']);
-            $user->setLastname($data['lastname']);
+            $user->setFirstname($data['firstName']);
+            $user->setLastname($data['lastName']);
             $user->setEmail($data['email']);
             $user->setPhone($data['phone']);
             $user->setAccount($manager->getRepository('App:Account')->findOneById($data['account_id']));
@@ -49,8 +49,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     {
         return [
             [
-                'firstname' => 'Arthur',
-                'lastname' => 'Liege',
+                'firstName' => 'Arthur',
+                'lastName' => 'Liege',
                 'phone' => '+33 7549394585',
                 'email' => 'pizza@pizza.pizza',
                 'account_id' => 1,
