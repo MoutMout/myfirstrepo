@@ -84,7 +84,7 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
                 'wifi' => true,
                 'user_ids' => [1],
                 'invoice_ids' => [1, 2],
-                'merchant_id' => 1
+                'merchant_id' => 1,
             ],
             [
                 'name' => 'My Location 2',
@@ -104,7 +104,7 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
                 'wifi' => true,
                 'user_ids' => [],
                 'invoice_ids' => [1],
-                'merchant_id' => 1
+                'merchant_id' => 1,
             ],
         ];
     }

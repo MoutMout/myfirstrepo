@@ -36,6 +36,13 @@ class UserRole
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="role")
+     *
+     * @Embeddable()
+     */
+    private $users = [];
+
+    /**
      * @return int
      */
     public function getId()
@@ -71,6 +78,27 @@ class UserRole
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return User[]
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return UserRole
+     */
+    public function setUsers(User $user): self
+    {
+        $user->setRole($this);
+        $this->users[] = $user;
 
         return $this;
     }

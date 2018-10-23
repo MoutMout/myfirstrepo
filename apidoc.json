@@ -840,6 +840,26 @@
                                         },
                                         "attributes": {
                                             "$ref": "#/definitions/UserType"
+                                        },
+                                        "relationships": {
+                                            "properties": {
+                                                "role": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string",
+                                                                    "default": "roles"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -1535,6 +1555,12 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "users": {
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

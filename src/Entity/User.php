@@ -72,7 +72,7 @@ class User
     private $account;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\UserRole")
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserRole", inversedBy="userRoles")
      * @ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=false)
      *
      * @Embeddable()
