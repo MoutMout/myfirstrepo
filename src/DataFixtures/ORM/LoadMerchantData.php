@@ -28,17 +28,6 @@ class LoadMerchantData extends AbstractFixture implements OrderedFixtureInterfac
             $merchant->setCity($data['city']);
             $merchant->setVATnumber($data['VATnumber']);
 
-            if (is_array($data['locations'])) {
-                foreach ($data['locations'] as $locationId) {
-                    $merchant->setLocation($manager->getRepository('App:Location')->findOneById($locationId));
-                }
-            }
-
-            if (is_array($data['users'])) {
-                foreach ($data['users'] as $userId) {
-                    $merchant->setUser($manager->getRepository('App:User')->findOneById($userId));
-                }
-            }
             $manager->persist($merchant);
         }
 
@@ -68,8 +57,6 @@ class LoadMerchantData extends AbstractFixture implements OrderedFixtureInterfac
                 'VATnumber' => '1234567890',
                 'created_at' => 20181011,
                 'updated_at' => 20181014,
-                'locations' => [1, 2],
-                'users' => [1],
             ],
         ];
     }

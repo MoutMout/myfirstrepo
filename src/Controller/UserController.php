@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\Type\UserType;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Wizards\RestBundle\Controller\JsonControllerTrait;
 use WizardsRest\CollectionManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -18,6 +20,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class UserController extends Controller
 {
+    use JsonControllerTrait;
+
     /**
      * @var CollectionManager
      */
@@ -91,17 +95,21 @@ class UserController extends Controller
      *
      * @Route("", methods={"POST"})
      * 
-     * @SWG\Parameter(
-     *     name="body",
-     *     in="body",
-     *     description="User to create",
-     *     required=true,
-     *     @SWG\Schema(
-     *       @SWG\Property(property="data",
-     *         @SWG\Property(property="type", type="string"),
-     *         @SWG\Property(property="attributes", ref=@Model(type=User::class))
+     * @SWG\Post(
+     *     consumes={"application/vnd.api+json"},
+     *     @SWG\Parameter(
+     *        name="body",
+     *        in="body",
+     *        description="User to create",
+     *        required=true,
+     *        @SWG\Schema(
+     *            type="object",
+     *            @SWG\Property(property="data",
+     *               @SWG\Property(property="type", type="string"),
+     *               @SWG\Property(property="attributes", ref=@Model(type=UserType::class))
+     *            )
+     *        )
      *     )
-     * )
      * )
      * @SWG\Response(
      *     response=200,
@@ -122,24 +130,17 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $data = $request->getContent();
-        $json = json_decode($data, true);
-        var_dump($json);exit;
-        $manager = $this->getDoctrine()->getManager();
-
         $user = new User();
-        $user->setFirstname($json['data']['attributes']['firstName']);
-        $user->setLastname($json['data']['attributes']['lastName']);
-        $user->setEmail($json['data']['attributes']['email']);
-        $user->setPhone($json['data']['attributes']['phone']);
-        $user->setRole($manager->getRepository('App:UserRole')->findOneById($json['data']['relationships']['role']['id']));
-        $user->setMerchant($manager->getRepository('App:Merchant')->findOneById(1));
-        $user->setCreatedAt(20181011);
-        $user->setUpdatedAt(20181018);
-
-        $manager->persist($user);
-        $manager->flush();
+        $form = $this->createForm(UserType::class, $user, ['method' => 'POST']);
+        $this->handleJsonForm($form, $request);
+        $user->setCreatedAt((new \DateTime())->getTimestamp());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
 
         return $user;
+
+        $user->setRole($manager->getRepository('App:UserRole')->findOneById($json['data']['relationships']['role']['id']));
+        $user->setMerchant($manager->getRepository('App:Merchant')->findOneById(1));
     }
 }

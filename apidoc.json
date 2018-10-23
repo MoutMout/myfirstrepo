@@ -822,6 +822,9 @@
             },
             "post": {
                 "summary": "Create a User.",
+                "consumes": [
+                    "application/vnd.api+json"
+                ],
                 "parameters": [
                     {
                         "name": "body",
@@ -836,11 +839,12 @@
                                             "type": "string"
                                         },
                                         "attributes": {
-                                            "$ref": "#/definitions/User"
+                                            "$ref": "#/definitions/UserType"
                                         }
                                     }
                                 }
-                            }
+                            },
+                            "type": "object"
                         }
                     }
                 ],
@@ -1451,6 +1455,13 @@
             "type": "object"
         },
         "User": {
+            "required": [
+                "firstname",
+                "lastname",
+                "email",
+                "phone",
+                "createdAt"
+            ],
             "properties": {
                 "id": {
                     "type": "integer"
@@ -1490,6 +1501,29 @@
                 },
                 "account": {
                     "$ref": "#/definitions/Account"
+                }
+            },
+            "type": "object"
+        },
+        "UserType": {
+            "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "phone"
+            ],
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
                 }
             },
             "type": "object"

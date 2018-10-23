@@ -32,7 +32,7 @@ class LoadAccountData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 0;
+        return 1000;
     }
 
     /**

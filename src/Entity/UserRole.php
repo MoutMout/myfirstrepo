@@ -36,13 +36,6 @@ class UserRole
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="role")
-     *
-     * @Embeddable()
-     */
-    private $users;
-
-    /**
      * @return int
      */
     public function getId()

@@ -95,14 +95,14 @@ class Merchant
     private $organisation;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Location", mappedBy="merchant", fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="App\Entity\Location", mappedBy="merchant")
      *
      * @Embeddable()
      */
     private $locations = [];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="merchant", fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="merchant")
      *
      * @Embeddable()
      */
