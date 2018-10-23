@@ -89,6 +89,13 @@ class Product
     private $offers;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InvoiceTransaction", mappedBy="product")
+     *
+     * @Embeddable()
+     */
+    private $transactions;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -214,5 +221,25 @@ class Product
     public function setUpdatedAt(int $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return InvoiceTransaction[]
+     */
+    public function getTransactions()
+    {
+        return $this->transactions;
+    }
+
+    /**
+     * @param InvoiceTransaction $transaction
+     *
+     * @return Product
+     */
+    public function setTransaction(InvoiceTransaction $transaction): self
+    {
+        $this->transactions[] = $transaction;
+
+        return $this;
     }
 }

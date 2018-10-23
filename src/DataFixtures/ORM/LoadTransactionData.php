@@ -6,7 +6,7 @@ use App\Entity\Transaction;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use \DateTime;
+use DateTime;
 
 /**
  * Class LoadTransactionData.

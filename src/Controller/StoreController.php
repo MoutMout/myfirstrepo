@@ -24,6 +24,7 @@ class StoreController extends Controller
 
     /**
      * ArtistController constructor.
+     *
      * @param CollectionManager $rest
      */
     public function __construct(CollectionManager $rest)
