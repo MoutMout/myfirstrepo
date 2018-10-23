@@ -1052,7 +1052,7 @@
                     "type": "integer"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "type": {
                     "type": "string"
@@ -1097,7 +1097,7 @@
             ],
             "properties": {
                 "userId": {
-                    "type": "number"
+                    "type": "string"
                 },
                 "type": {
                     "type": "string"
