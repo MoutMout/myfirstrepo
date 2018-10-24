@@ -57,8 +57,8 @@ class LoadContractData extends AbstractFixture implements OrderedFixtureInterfac
             [
                 'merchant_id' => 2,
                 'file' => 'http://file.fr/test2.pdf',
-                'therms_conditions_file' => 'lien3',
-                'power_attorney_file' => 'lien3',
+                'therms_conditions_file' => 'my_contract.pdf',
+                'power_attorney_file' => 'my_poa.pdf',
                 'created_at' => 20181012,
                 'updated_at' => 20181012,
             ],
