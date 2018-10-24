@@ -47,6 +47,11 @@ class LoadOrganisationData extends AbstractFixture implements OrderedFixtureInte
                 'created_at' => 20181011,
                 'updated_at' => 20181014,
             ],
+            [
+                'name' => 'Orga 2',
+                'created_at' => 20180909,
+                'updated_at' => 20181122,
+            ],
         ];
     }
 }

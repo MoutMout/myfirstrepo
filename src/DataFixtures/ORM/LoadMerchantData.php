@@ -58,6 +58,18 @@ class LoadMerchantData extends AbstractFixture implements OrderedFixtureInterfac
                 'created_at' => 20181011,
                 'updated_at' => 20181014,
             ],
+            [
+                'organisation_id' => '2',
+                'companyId' => '74jsdo384j',
+                'address' => '51 rue Spooktober',
+                'postalCode' => '60200',
+                'city' => 'Caen',
+                'VATnumber' => '0987654321',
+                'created_at' => 20181012,
+                'updated_at' => 20181012,
+                'locations' => [3],
+                'users' => [1],
+            ],
         ];
     }
 }

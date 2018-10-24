@@ -56,6 +56,40 @@ class Contract
     private $file;
 
     /**
+     * @return string
+     */
+    public function getThermsConditionsFile(): string
+    {
+        return $this->thermsConditionsFile;
+    }
+
+    /**
+     * @param string $thermsConditionsFile
+     */
+    public function setThermsConditionsFile(string $thermsConditionsFile): void
+    {
+        $this->thermsConditionsFile = $thermsConditionsFile;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="therms_conditions_file", type="string")
+     *
+     * @Exposable
+     */
+    private $thermsConditionsFile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="power_attorney_file", type="string")
+     *
+     * @Exposable
+     */
+    private $powerAttorneyFile;
+
+    /**
      * @ORM\Column(name="created_at", type="integer")
      *
      * @Exposable
@@ -79,6 +113,22 @@ class Contract
         $this->id = $id;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPowerAttorneyFile(): string
+    {
+        return $this->powerAttorneyFile;
+    }
+
+    /**
+     * @param string $powerAttorneyFile
+     */
+    public function setPowerAttorneyFile(string $powerAttorneyFile): void
+    {
+        $this->powerAttorneyFile = $powerAttorneyFile;
     }
 
     /**

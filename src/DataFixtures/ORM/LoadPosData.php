@@ -70,6 +70,14 @@ class LoadPosData extends AbstractFixture implements OrderedFixtureInterface
                 'device_id' => 1,
                 'location_id' => 2,
             ],
+            [
+                'terminal_id' => 'JF8376RHF',
+                'created_at' => 20181012,
+                'updated_at' => 20181012,
+                'bank_id' => 2,
+                'device_id' => 1,
+                'location_id' => 3,
+            ],
         ];
     }
 }
