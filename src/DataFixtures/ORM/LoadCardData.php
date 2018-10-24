@@ -51,7 +51,7 @@ class LoadCardData extends AbstractFixture implements OrderedFixtureInterface
     {
         return [
             [
-                'userId' => '1',
+                'userId' => 'ec53e6502d354e8f9e339f71128eea70', // jean dupont
                 'type' => 'restaurant',
                 'numbers' => '4489',
                 'company' => 'Sodexo',

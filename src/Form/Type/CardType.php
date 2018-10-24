@@ -23,7 +23,7 @@ class CardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('userId', NumberType::class, ['required' => true])
+            ->add('userId', TextType::class, ['required' => true])
             ->add('type', TextType::class, ['required' => true])
             ->add('numbers', TextType::class, ['required' => true])
             ->add('company', TextType::class, ['required' => true])

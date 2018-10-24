@@ -27,9 +27,9 @@ class Card
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="userid", type="integer")
+     * @ORM\Column(name="userid", type="string", length=300)
      *
      * @Assert\NotBlank()
      *
@@ -138,11 +138,11 @@ class Card
     }
 
     /**
-     * @param int $userId
+     * @param string $userId
      *
      * @return $this
      */
-    public function setUserId(int $userId)
+    public function setUserId(string $userId)
     {
         $this->userId = $userId;
 
@@ -254,7 +254,7 @@ class Card
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getUserId()
     {

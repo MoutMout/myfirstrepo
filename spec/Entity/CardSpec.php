@@ -26,13 +26,13 @@ class CardSpec extends ObjectBehavior
 
     function it_has_an_userId_setter()
     {
-        $this->setUserId(666)->shouldReturn($this);
+        $this->setUserId('666')->shouldReturn($this);
     }
 
     function it_has_an_userId()
     {
-        $this->setUserId(666);
-        $this->getUserId()->shouldReturn(666);
+        $this->setUserId('666');
+        $this->getUserId()->shouldReturn('666');
     }
 
     function it_has_an_type_setter()
