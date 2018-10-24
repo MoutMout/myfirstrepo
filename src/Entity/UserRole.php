@@ -40,7 +40,7 @@ class UserRole
      *
      * @Embeddable()
      */
-    private $users;
+    private $users = [];
 
     /**
      * @return int
@@ -78,6 +78,27 @@ class UserRole
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return User[]
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return UserRole
+     */
+    public function setUsers(User $user): self
+    {
+        $user->setRole($this);
+        $this->users[] = $user;
 
         return $this;
     }

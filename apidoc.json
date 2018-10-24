@@ -889,6 +889,81 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Create a User.",
+                "consumes": [
+                    "application/vnd.api+json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "User to create",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/UserType"
+                                        },
+                                        "relationships": {
+                                            "properties": {
+                                                "role": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string",
+                                                                    "default": "roles"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a transaction",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/User"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/users/{id}": {
@@ -1502,6 +1577,13 @@
             "type": "object"
         },
         "User": {
+            "required": [
+                "firstname",
+                "lastname",
+                "email",
+                "phone",
+                "createdAt"
+            ],
             "properties": {
                 "id": {
                     "type": "integer"
@@ -1545,6 +1627,29 @@
             },
             "type": "object"
         },
+        "UserType": {
+            "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "phone"
+            ],
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "UserRole": {
             "properties": {
                 "id": {
@@ -1552,6 +1657,12 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "users": {
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

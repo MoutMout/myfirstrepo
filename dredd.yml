@@ -5,8 +5,8 @@ init: false
 custom: {}
 names: false
 only: []
-reporter: []
-output: []
+reporter: ["markdown", "xunit"]
+output: ["./var/log/dredd.md", "./var/log/dredd.log"]
 header: []
 sorted: false
 inline-errors: false

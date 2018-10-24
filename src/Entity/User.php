@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use WizardsRest\Annotation\Embeddable;
 use WizardsRest\Annotation\Exposable;
 use WizardsRest\Annotation\Type;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -29,12 +30,16 @@ class User
     /**
      * @ORM\Column(name="firstname", type="string")
      *
+     * @Assert\NotBlank()
+     *
      * @Exposable
      */
     private $firstname;
 
     /**
      * @ORM\Column(name="lastname", type="string")
+     *
+     * @Assert\NotBlank()
      *
      * @Exposable
      */
@@ -43,12 +48,16 @@ class User
     /**
      * @ORM\Column(name="email", type="string")
      *
+     * @Assert\NotBlank()
+     *
      * @Exposable
      */
     private $email;
 
     /**
      * @ORM\Column(name="phone", type="string")
+     *
+     * @Assert\NotBlank()
      *
      * @Exposable
      */
@@ -63,14 +72,16 @@ class User
     private $account;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\UserRole", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserRole", inversedBy="userRoles")
+     * @ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=false)
      *
      * @Embeddable()
      */
     private $role;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Merchant", inversedBy="users", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Merchant", inversedBy="users")
+     * @ORM\JoinColumn(name="merchant_id", referencedColumnName="id", nullable=false)
      *
      * @Embeddable()
      */
@@ -79,12 +90,14 @@ class User
     /**
      * @ORM\Column(name="created_at", type="integer")
      *
+     * @Assert\NotBlank()
+     *
      * @Exposable
      */
     private $createdAt;
 
     /**
-     * @ORM\Column(name="updated_at", type="integer")
+     * @ORM\Column(name="updated_at", type="integer", nullable=true)
      *
      * @Exposable
      */

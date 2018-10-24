@@ -37,7 +37,7 @@ class LoadPosData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 1006;
+        return 1013;
     }
 
     /**

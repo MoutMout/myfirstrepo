@@ -34,7 +34,7 @@ class LoadActivityData extends AbstractFixture implements OrderedFixtureInterfac
      */
     public function getOrder()
     {
-        return 0;
+        return 1000;
     }
 
     /**

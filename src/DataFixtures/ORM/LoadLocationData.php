@@ -30,19 +30,18 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
             $location->setPhoneNumberBis($data['phoneNumberBis']);
             $location->setCreatedAt($data['created_at']);
             $location->setUpdatedAt($data['updated_at']);
-            $location->setActivity($manager->getRepository('App:Activity')->findOneById($data['activityId']));
-            //$location->setBisActivity($manager->getRepository('App:BisActivity')->findOneById($data['bisActivityId']));
-            //$location->setTerActivity($manager->getRepository('App:TerActivity')->findOneById($data['terActivityId']));
+            $location->setActivity($manager->getRepository('App:Activity')->findOneById($data['activity_id']));
+            $location->setMerchant($manager->getRepository('App:Merchant')->findOneById($data['merchant_id']));
             $location->setWifi($data['wifi']);
 
-            if (is_array($data['users'])) {
-                foreach ($data['users'] as $userId) {
+            if (is_array($data['user_ids'])) {
+                foreach ($data['user_ids'] as $userId) {
                     $location->setUser($manager->getRepository('App:User')->findOneById($userId));
                 }
             }
 
-            if (is_array($data['invoices'])) {
-                foreach ($data['invoices'] as $invoiceId) {
+            if (is_array($data['invoice_ids'])) {
+                foreach ($data['invoice_ids'] as $invoiceId) {
                     $location->setInvoice($manager->getRepository('App:Invoice')->findOneById($invoiceId));
                 }
             }
@@ -58,7 +57,7 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
      */
     public function getOrder()
     {
-        return 5;
+        return 1012;
     }
 
     /**
@@ -79,13 +78,13 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
                 'phoneNumberBis' => '06234234234',
                 'created_at' => 20181011,
                 'updated_at' => 20181014,
-                'activityId' => 1,
-                'bisActivityId' => 1,
-                'terActivityId' => 1,
+                'activity_id' => 1,
+                'bisActivity_id' => 1,
+                'terActivity_id' => 1,
                 'wifi' => true,
-                'users' => [1],
-                'pos' => [],
-                'invoices' => [1, 2],
+                'user_ids' => [1],
+                'invoice_ids' => [1, 2],
+                'merchant_id' => 1,
             ],
             [
                 'name' => 'My Location 2',
@@ -99,13 +98,13 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
                 'phoneNumberBis' => '06234234234',
                 'created_at' => 20181011,
                 'updated_at' => 20181014,
-                'activityId' => 2,
-                'bisActivityId' => null,
-                'terActivityId' => null,
+                'activity_id' => 2,
+                'bisActivity_id' => null,
+                'terActivity_id' => null,
                 'wifi' => true,
-                'users' => [],
-                'pos' => [1, 2, 3],
-                'invoices' => [1],
+                'user_ids' => [],
+                'invoice_ids' => [1],
+                'merchant_id' => 1,
             ],
         ];
     }
