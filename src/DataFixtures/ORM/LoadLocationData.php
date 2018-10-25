@@ -102,7 +102,7 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
                 'bisActivity_id' => null,
                 'terActivity_id' => null,
                 'wifi' => true,
-                'user_ids' => [],
+                'user_ids' => [1],
                 'invoice_ids' => [1],
                 'merchant_id' => 1,
             ],
