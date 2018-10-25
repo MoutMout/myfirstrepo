@@ -56,22 +56,6 @@ class Contract
     private $file;
 
     /**
-     * @return string
-     */
-    public function getThermsConditionsFile(): string
-    {
-        return $this->thermsConditionsFile;
-    }
-
-    /**
-     * @param string $thermsConditionsFile
-     */
-    public function setThermsConditionsFile(string $thermsConditionsFile): void
-    {
-        $this->thermsConditionsFile = $thermsConditionsFile;
-    }
-
-    /**
      * @var string
      *
      * @ORM\Column(name="therms_conditions_file", type="string")
@@ -225,5 +209,21 @@ class Contract
     public function setUpdatedAt(int $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getThermsConditionsFile(): string
+    {
+        return $this->thermsConditionsFile;
+    }
+
+    /**
+     * @param string $thermsConditionsFile
+     */
+    public function setThermsConditionsFile(string $thermsConditionsFile): void
+    {
+        $this->thermsConditionsFile = $thermsConditionsFile;
     }
 }
