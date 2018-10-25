@@ -94,6 +94,13 @@ class Invoice
     private $nbShipments;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InvoiceTransaction", mappedBy="invoice", fetch="EAGER")
+     *
+     * @Embeddable()
+     */
+    private $transactions;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -257,6 +264,26 @@ class Invoice
     public function setNbShipments(?int $nbShipments): self
     {
         $this->nbShipments = $nbShipments;
+
+        return $this;
+    }
+
+    /**
+     * @return InvoiceTransaction[]
+     */
+    public function getTransactions()
+    {
+        return $this->transactions;
+    }
+
+    /**
+     * @param InvoiceTransaction $transaction
+     *
+     * @return Invoice
+     */
+    public function setTransaction(InvoiceTransaction $transaction): self
+    {
+        $this->transactions[] = $transaction;
 
         return $this;
     }

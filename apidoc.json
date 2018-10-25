@@ -331,6 +331,76 @@
                 }
             }
         },
+        "/invoice-transactions": {
+            "get": {
+                "summary": "Get all Invoice transactions.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated InvoiceTransaction collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/InvoiceTransaction"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/invoice-transactions/{id}": {
+            "get": {
+                "summary": "Get an InvoiceTransaction.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get an InvoiceTransaction",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/InvoiceTransaction"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "POS not found"
+                    }
+                }
+            }
+        },
         "/locations": {
             "get": {
                 "summary": "Get all locations.",
@@ -1240,6 +1310,44 @@
                 },
                 "nbShipments": {
                     "type": "integer"
+                },
+                "transactions": {
+                    "items": {
+                        "$ref": "#/definitions/InvoiceTransaction"
+                    },
+                    "type": "array"
+                },
+                "transaction": {
+                    "$ref": "#/definitions/InvoiceTransaction"
+                }
+            },
+            "type": "object"
+        },
+        "InvoiceTransaction": {
+            "required": [
+                "date",
+                "amount",
+                "currency"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "amount": {
+                    "type": "integer"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "invoice": {
+                    "$ref": "#/definitions/Invoice"
+                },
+                "product": {
+                    "$ref": "#/definitions/Product"
                 }
             },
             "type": "object"
@@ -1477,6 +1585,15 @@
                 },
                 "updatedAt": {
                     "type": "integer"
+                },
+                "transactions": {
+                    "items": {
+                        "$ref": "#/definitions/InvoiceTransaction"
+                    },
+                    "type": "array"
+                },
+                "transaction": {
+                    "$ref": "#/definitions/InvoiceTransaction"
                 }
             },
             "type": "object"
