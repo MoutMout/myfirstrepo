@@ -8,9 +8,11 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20181092191455 extends AbstractMigration
+final class Version20181025120335 extends AbstractMigration
 {
     /**
+     * Create Table.
+     *
      * @param Schema $schema
      *
      * @throws \Doctrine\DBAL\DBALException
@@ -21,11 +23,12 @@ final class Version20181092191455 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('ALTER TABLE contract ADD therms_conditions_file VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE contract ADD power_attorney_file VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE location ALTER updated_at DROP NOT NULL');
     }
 
     /**
+     * Remove table.
+     *
      * @param Schema $schema
      *
      * @throws \Doctrine\DBAL\DBALException
@@ -37,7 +40,6 @@ final class Version20181092191455 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('ALTER TABLE contract DROP therms_conditions_file');
-        $this->addSql('ALTER TABLE contract DROP power_attorney_file');
+        $this->addSql('ALTER TABLE location ALTER updated_at SET NOT NULL');
     }
 }

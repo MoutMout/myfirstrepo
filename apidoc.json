@@ -623,6 +623,98 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Create a Location.",
+                "consumes": [
+                    "application/vnd.api+json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Location to create",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "default": "locations"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/LocationType"
+                                        },
+                                        "relationships": {
+                                            "properties": {
+                                                "activity": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string",
+                                                                    "default": "activities"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "merchant": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string",
+                                                                    "default": "merchants"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get created location",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Location"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Location not found"
+                    }
+                }
             }
         },
         "/locations/{id}": {
@@ -831,6 +923,101 @@
                             },
                             "type": "object"
                         }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a POS.",
+                "consumes": [
+                    "application/vnd.api+json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Pos to create",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/PosType"
+                                        },
+                                        "relationships": {
+                                            "properties": {
+                                                "location": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "bank": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "device": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get created pos",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Pos"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Pos not found"
                     }
                 }
             }
@@ -1188,6 +1375,22 @@
                                                                 "type": {
                                                                     "type": "string",
                                                                     "default": "roles"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "merchant": {
+                                                    "properties": {
+                                                        "data": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "default": "1"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string",
+                                                                    "default": "merchants"
                                                                 }
                                                             }
                                                         }
@@ -1722,6 +1925,51 @@
             },
             "type": "object"
         },
+        "LocationType": {
+            "required": [
+                "name",
+                "address",
+                "postalCode",
+                "locality",
+                "houseNumber",
+                "website",
+                "email",
+                "phoneNumber"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "locality": {
+                    "type": "string"
+                },
+                "houseNumber": {
+                    "type": "string"
+                },
+                "website": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "phoneNumberBis": {
+                    "type": "string"
+                },
+                "wifi": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Merchant": {
             "required": [
                 "companyId",
@@ -1833,6 +2081,17 @@
                 },
                 "device": {
                     "$ref": "#/definitions/Device"
+                }
+            },
+            "type": "object"
+        },
+        "PosType": {
+            "required": [
+                "terminalId"
+            ],
+            "properties": {
+                "terminalId": {
+                    "type": "string"
                 }
             },
             "type": "object"

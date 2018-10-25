@@ -31,7 +31,7 @@ class User
      * @ORM\Column(name="firstname", type="string")
      *
      * @Assert\NotBlank()
-     *
+     *us
      * @Exposable
      */
     private $firstname;

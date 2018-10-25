@@ -131,7 +131,7 @@ class Location
     private $createdAt;
 
     /**
-     * @ORM\Column(name="updated_at", type="integer")
+     * @ORM\Column(name="updated_at", type="integer", nullable=true)
      *
      * @Exposable
      */
@@ -198,7 +198,7 @@ class Location
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -218,7 +218,7 @@ class Location
     /**
      * @return string
      */
-    public function getAddress()
+    public function getAddress(): ?string
     {
         return $this->address;
     }
@@ -238,7 +238,7 @@ class Location
     /**
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
@@ -258,7 +258,7 @@ class Location
     /**
      * @return string
      */
-    public function getLocality()
+    public function getLocality(): ?string
     {
         return $this->locality;
     }
@@ -278,7 +278,7 @@ class Location
     /**
      * @return string
      */
-    public function getHouseNumber()
+    public function getHouseNumber(): ?string
     {
         return $this->houseNumber;
     }
@@ -318,7 +318,7 @@ class Location
     /**
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -338,7 +338,7 @@ class Location
     /**
      * @return string
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
