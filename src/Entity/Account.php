@@ -91,7 +91,7 @@ class Account
     /**
      * @return string
      */
-    public function getLogin(): string
+    public function getLogin()
     {
         return $this->login;
     }
@@ -99,7 +99,7 @@ class Account
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }

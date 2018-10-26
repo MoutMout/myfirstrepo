@@ -160,7 +160,7 @@ class MerchantProductOffer
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -176,7 +176,7 @@ class MerchantProductOffer
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -208,7 +208,7 @@ class MerchantProductOffer
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -224,7 +224,7 @@ class MerchantProductOffer
     /**
      * @return string
      */
-    public function getBundleType(): string
+    public function getBundleType()
     {
         return $this->bundleType;
     }
@@ -240,7 +240,7 @@ class MerchantProductOffer
     /**
      * @return string
      */
-    public function getPercentCost(): string
+    public function getPercentCost()
     {
         return $this->percentCost;
     }
@@ -256,7 +256,7 @@ class MerchantProductOffer
     /**
      * @return string
      */
-    public function getFixedFeeAmount(): string
+    public function getFixedFeeAmount()
     {
         return $this->fixedFeeAmount;
     }
@@ -272,7 +272,7 @@ class MerchantProductOffer
     /**
      * @return string
      */
-    public function getFixedFeeCurrency(): string
+    public function getFixedFeeCurrency()
     {
         return $this->fixedFeeCurrency;
     }

@@ -198,7 +198,7 @@ class Location
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -218,7 +218,7 @@ class Location
     /**
      * @return string
      */
-    public function getAddress(): string
+    public function getAddress()
     {
         return $this->address;
     }
@@ -238,7 +238,7 @@ class Location
     /**
      * @return string
      */
-    public function getPostalCode(): string
+    public function getPostalCode()
     {
         return $this->postalCode;
     }
@@ -258,7 +258,7 @@ class Location
     /**
      * @return string
      */
-    public function getLocality(): string
+    public function getLocality()
     {
         return $this->locality;
     }
@@ -278,7 +278,7 @@ class Location
     /**
      * @return string
      */
-    public function getHouseNumber(): string
+    public function getHouseNumber()
     {
         return $this->houseNumber;
     }
@@ -318,7 +318,7 @@ class Location
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -338,7 +338,7 @@ class Location
     /**
      * @return string
      */
-    public function getPhoneNumber(): string
+    public function getPhoneNumber()
     {
         return $this->phoneNumber;
     }
