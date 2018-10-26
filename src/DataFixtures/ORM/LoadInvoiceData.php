@@ -65,6 +65,15 @@ class LoadInvoiceData extends AbstractFixture implements OrderedFixtureInterface
                 'nbShipments' => 44,
                 'currency' => 'EUR',
             ],
+            [
+                'issueDate' => new \DateTime('-1 day'),
+                'dueDate' => new \DateTime('+1 day'),
+                'amount' => 239,
+                'nbVoucherPurchases' => 14,
+                'nbCardPurchases' => 30,
+                'nbShipments' => 22,
+                'currency' => 'EUR',
+            ],
         ];
     }
 }

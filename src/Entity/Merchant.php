@@ -61,6 +61,17 @@ class Merchant
     private $postalCode;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string")
+     *
+     * @Assert\NotBlank()
+     *
+     * @Exposable
+     */
+    private $city;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="VATnumber", type="integer")
@@ -114,6 +125,24 @@ class Merchant
      * @Embeddable()
      */
     private $contract;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="court_file_nb", type="string")
+     *
+     * @Exposable
+     */
+    private $courtFileNb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ico_number", type="string")
+     *
+     * @Exposable
+     */
+    private $icoNumber;
 
     /**
      * @param int $id
@@ -208,6 +237,22 @@ class Merchant
     }
 
     /**
+     * @return string
+     */
+    public function getIcoNumber(): string
+    {
+        return $this->icoNumber;
+    }
+
+    /**
+     * @param string $icoNumber
+     */
+    public function setIcoNumber(string $icoNumber): void
+    {
+        $this->icoNumber = $icoNumber;
+    }
+
+    /**
      * @return Organisation
      */
     public function getOrganisation()
@@ -246,6 +291,23 @@ class Merchant
     {
         return $this->city;
     }
+
+    /**
+     * @return string
+     */
+    public function getCourtFileNb(): string
+    {
+        return $this->courtFileNb;
+    }
+
+    /**
+     * @param string $courtFileNb
+     */
+    public function setCourtFileNb(string $courtFileNb): void
+    {
+        $this->courtFileNb = $courtFileNb;
+    }
+
 
     /**
      * @return int

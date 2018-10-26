@@ -106,6 +106,26 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
                 'invoice_ids' => [1],
                 'merchant_id' => 1,
             ],
+            [
+                'name' => '3rd Location',
+                'address' => '120 rue de la fontaine',
+                'postalCode' => '75015',
+                'locality' => 'Paris',
+                'houseNumber' => '120',
+                'website' => 'http://example3.com',
+                'email' => 'tristanj@example.com',
+                'phoneNumber' => '06123123122',
+                'phoneNumberBis' => '06234234333',
+                'created_at' => 20181012,
+                'updated_at' => 20181012,
+                'activity_id' => 2,
+                'bisActivity_id' => null,
+                'terActivity_id' => null,
+                'wifi' => true,
+                'user_ids' => [1],
+                'invoice_ids' => [3],
+                'merchant_id' => 1,
+            ],
         ];
     }
 }
