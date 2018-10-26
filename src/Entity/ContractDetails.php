@@ -35,20 +35,28 @@ class ContractDetails
     private $contract;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Product")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Product")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false)
      *
      * @Embeddable()
      */
     private $product;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\MerchantProductOffer")
-     * @ORM\JoinColumn(name="offer_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\MerchantProductOffer")
+     * @ORM\JoinColumn(name="offer_id", referencedColumnName="id", nullable=false)
      *
      * @Embeddable()
      */
     private $offer;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MerchantProductOfferOption")
+     * @ORM\JoinColumn(name="option_id", referencedColumnName="id", nullable=false)
+     *
+     * @Embeddable()
+     */
+    private $option;
 
     /**
      * @ORM\Column(name="created_at", type="integer")
@@ -92,51 +100,67 @@ class ContractDetails
     }
 
     /**
-     * @return mixed
+     * @return Product
      */
-    public function getContract()
-    {
-        return $this->contract;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProduct()
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
     /**
-     * @param mixed $product
+     * @param Product $product
      */
-    public function setProduct($product): void
+    public function setProduct(Product $product): void
     {
         $this->product = $product;
     }
 
     /**
-     * @return mixed
-     */
-    public function getOffer()
+ * @return MerchantProductOffer
+ */
+    public function getOffer(): ?MerchantProductOffer
     {
         return $this->offer;
     }
 
     /**
-     * @param mixed $offer
+     * @param MerchantProductOffer $offer
      */
-    public function setOffer($offer): void
+    public function setOffer(MerchantProductOffer $offer): void
     {
         $this->offer = $offer;
     }
 
     /**
-     * @param mixed $contract
+     * @return MerchantProductOfferOption
      */
-    public function setContract($contract): void
+    public function getOption(): ?MerchantProductOfferOption
+    {
+        return $this->option;
+    }
+
+    /**
+     * @param MerchantProductOfferOption $option
+     */
+    public function setOption(MerchantProductOfferOption $option): void
+    {
+        $this->option = $option;
+    }
+
+    /**
+     * @param Contract $contract
+     */
+    public function setContract(Contract $contract): void
     {
         $this->contract = $contract;
+    }
+
+    /**
+     * @return Contract
+     */
+    public function getContract(): ?Contract
+    {
+        return $this->contract;
     }
 
     /**
