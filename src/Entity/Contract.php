@@ -102,7 +102,7 @@ class Contract
     /**
      * @return string
      */
-    public function getPowerAttorneyFile(): string
+    public function getPowerAttorneyFile()
     {
         return $this->powerAttorneyFile;
     }
@@ -214,7 +214,7 @@ class Contract
     /**
      * @return string
      */
-    public function getThermsConditionsFile(): string
+    public function getThermsConditionsFile()
     {
         return $this->thermsConditionsFile;
     }

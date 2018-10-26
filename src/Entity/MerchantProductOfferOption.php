@@ -111,7 +111,7 @@ class MerchantProductOfferOption
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -127,7 +127,7 @@ class MerchantProductOfferOption
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -143,7 +143,7 @@ class MerchantProductOfferOption
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -159,7 +159,7 @@ class MerchantProductOfferOption
     /**
      * @return string
      */
-    public function getPercentCost(): string
+    public function getPercentCost()
     {
         return $this->percentCost;
     }

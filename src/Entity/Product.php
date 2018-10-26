@@ -114,7 +114,7 @@ class Product
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -130,7 +130,7 @@ class Product
     /**
      * @return string
      */
-    public function getImageUrl(): string
+    public function getImageUrl()
     {
         return $this->imageUrl;
     }
@@ -146,7 +146,7 @@ class Product
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
