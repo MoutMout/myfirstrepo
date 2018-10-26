@@ -22,6 +22,7 @@ class LoadContractDetailsData extends AbstractFixture implements OrderedFixtureI
             $contractDetails->setContract($manager->getRepository('App:Contract')->findOneById($data['contract_id']));
             $contractDetails->setProduct($manager->getRepository('App:Product')->findOneById($data['product_id']));
             $contractDetails->setOffer($manager->getRepository('App:MerchantProductOffer')->findOneById($data['offer_id']));
+            $contractDetails->setOption($manager->getRepository('App:MerchantProductOfferOption')->findOneById($data['option_id']));
             $contractDetails->setCreatedAt($data['created_at']);
             $contractDetails->setUpdatedAt($data['updated_at']);
             $contractDetails->setDeletedAt($data['deleted_at']);
@@ -36,7 +37,7 @@ class LoadContractDetailsData extends AbstractFixture implements OrderedFixtureI
      */
     public function getOrder()
     {
-        return 1002;
+        return 1050;
     }
 
     /**
@@ -49,6 +50,7 @@ class LoadContractDetailsData extends AbstractFixture implements OrderedFixtureI
                 'contract_id' => 1,
                 'product_id' => 1,
                 'offer_id' => 1,
+                'option_id' => 1,
                 'created_at' => 20180320,
                 'updated_at' => 20180517,
                 'deleted_at' => 0,
@@ -57,6 +59,7 @@ class LoadContractDetailsData extends AbstractFixture implements OrderedFixtureI
                 'contract_id' => 1,
                 'product_id' => 2,
                 'offer_id' => 2,
+                'option_id' => 1,
                 'created_at' => 20180321,
                 'updated_at' => 20180509,
                 'deleted_at' => 0,
