@@ -239,7 +239,7 @@ class Merchant
     /**
      * @return string
      */
-    public function getIcoNumber(): string
+    public function getIcoNumber()
     {
         return $this->icoNumber;
     }
@@ -295,7 +295,7 @@ class Merchant
     /**
      * @return string
      */
-    public function getCourtFileNb(): string
+    public function getCourtFileNb()
     {
         return $this->courtFileNb;
     }
