@@ -137,6 +137,130 @@
                 }
             }
         },
+        "/candidates": {
+            "get": {
+                "summary": "Get all candidates.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated candidate collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Candidate"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/candidates/{id}": {
+            "get": {
+                "summary": "Get a Candidate.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a candidate",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Candidate"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Candidate not found"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Patch a Candidate.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Candidate to patch",
+                        "schema": {
+                            "properties": {
+                                "candidate": {
+                                    "$ref": "#/definitions/CandidateType"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a candidate",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Candidate"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request"
+                    },
+                    "404": {
+                        "description": "Candidate not found"
+                    }
+                }
+            }
+        },
         "/cards": {
             "get": {
                 "summary": "Get all cards.",
@@ -257,6 +381,76 @@
                     },
                     "404": {
                         "description": "Card not found"
+                    }
+                }
+            }
+        },
+        "/contracts": {
+            "get": {
+                "summary": "Get all contracts.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated contract collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Contract"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/contracts/{id}": {
+            "get": {
+                "summary": "Get a Contract.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get a contract",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "attributes": {
+                                            "$ref": "#/definitions/Contract"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Contract not found"
                     }
                 }
             }
@@ -1180,6 +1374,55 @@
             },
             "type": "object"
         },
+        "Candidate": {
+            "required": [
+                "cnp",
+                "firstName",
+                "lastName",
+                "isActive"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "cnp": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "CandidateType": {
+            "required": [
+                "cnp",
+                "firstName",
+                "lastName",
+                "isActive"
+            ],
+            "properties": {
+                "cnp": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Card": {
             "required": [
                 "userId",
@@ -1267,6 +1510,41 @@
                     "type": "number"
                 },
                 "currency": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Contract": {
+            "required": [
+                "file"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "powerAttorneyFile": {
+                    "type": "string"
+                },
+                "merchant": {
+                    "$ref": "#/definitions/Merchant"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "contractDetails": {
+                    "items": {
+                        "$ref": "#/definitions/ContractDetails"
+                    },
+                    "type": "array"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "thermsConditionsFile": {
                     "type": "string"
                 }
             },
@@ -1449,6 +1727,7 @@
                 "companyId",
                 "address",
                 "postalCode",
+                "city",
                 "VATnumber"
             ],
             "properties": {
@@ -1472,6 +1751,12 @@
                 },
                 "VATnumber": {
                     "type": "integer"
+                },
+                "icoNumber": {
+                    "type": "string"
+                },
+                "courtFileNb": {
+                    "type": "string"
                 },
                 "locations": {
                     "items": {
@@ -1784,30 +2069,30 @@
             },
             "type": "object"
         },
-        "Contract": {
-            "required": [
-                "file"
-            ],
+        "ContractDetails": {
             "properties": {
                 "id": {
                     "type": "integer"
                 },
-                "merchant": {
-                    "$ref": "#/definitions/Merchant"
+                "product": {
+                    "$ref": "#/definitions/Product"
                 },
-                "file": {
-                    "type": "string"
+                "offer": {
+                    "$ref": "#/definitions/MerchantProductOffer"
                 },
-                "contractDetails": {
-                    "items": {
-                        "$ref": "#/definitions/ContractDetails"
-                    },
-                    "type": "array"
+                "option": {
+                    "$ref": "#/definitions/MerchantProductOfferOption"
+                },
+                "contract": {
+                    "$ref": "#/definitions/Contract"
                 },
                 "createdAt": {
                     "type": "integer"
                 },
                 "updatedAt": {
+                    "type": "integer"
+                },
+                "deletedAt": {
                     "type": "integer"
                 }
             },
@@ -1904,32 +2189,6 @@
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "ContractDetails": {
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "contract": {
-                    "$ref": "#/definitions/Contract"
-                },
-                "product": {
-                    "$ref": "#/definitions/Product"
-                },
-                "offer": {
-                    "$ref": "#/definitions/MerchantProductOffer"
-                },
-                "createdAt": {
-                    "type": "integer"
-                },
-                "updatedAt": {
-                    "type": "integer"
-                },
-                "deletedAt": {
                     "type": "integer"
                 }
             },
