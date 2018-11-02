@@ -167,6 +167,14 @@ class Location
     private $users = [];
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Product", mappedBy="products")
+     * @ORM\JoinTable(name="products_locations")
+     *
+     * @Embeddable()
+     */
+    private $products = [];
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Merchant", inversedBy="locations")
      *
      * @Embeddable()
@@ -451,6 +459,27 @@ class Location
     public function setWifi(?bool $wifi): self
     {
         $this->wifi = $wifi;
+
+        return $this;
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return Location
+     */
+    public function setProduct(Product $product): self
+    {
+        $product->setLocation($this);
+        $this->products[] = $product;
 
         return $this;
     }

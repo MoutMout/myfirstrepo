@@ -96,6 +96,14 @@ class Product
     private $transactions;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Location", inversedBy="users")
+     * @ORM\JoinTable(name="products_locations")
+     *
+     * @Embeddable()
+     */
+    private $locations = [];
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -239,6 +247,26 @@ class Product
     public function setTransaction(InvoiceTransaction $transaction): self
     {
         $this->transactions[] = $transaction;
+
+        return $this;
+    }
+
+    /**
+     * @return Location[]
+     */
+    public function getLocations()
+    {
+        return $this->locations;
+    }
+
+    /**
+     * @param Location $location
+     *
+     * @return $this
+     */
+    public function setLocation(Location $location)
+    {
+        $this->locations[] = $location;
 
         return $this;
     }

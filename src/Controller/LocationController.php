@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Location;
+use App\Entity\Merchant;
 use App\Form\Type\LocationType;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -155,29 +156,41 @@ class LocationController extends Controller
         $merchantId = $relationships['merchant']['data']['id'];
         $activityId = $relationships['activity']['data']['id'];
 
-        $location->setMerchant($em->getRepository('App:Merchant')->findOneById($merchantId));
+        $merchant = $em->getRepository('App:Merchant')->findOneById($merchantId);
+        /* @var Merchant $merchant */
+        $merchant->setOnboarding(false);
+
+        $location->setMerchant($merchant);
         $location->setActivity($em->getRepository('App:Activity')->findOneById($activityId));
 
-        if (isset($relationships['bisActivity'])) {
+        if (!empty($relationships['bisActivity']['data']['id'])) {
             $location->setBisActivity($em->getRepository('App:Activity')->findOneById($relationships['bisActivity']['data']['id']));
         }
 
-        if (isset($relationships['terActivity'])) {
+        if (!empty($relationships['terActivity']['data']['id'])) {
             $location->setTerActivity($em->getRepository('App:Activity')->findOneById($relationships['terActivity']['data']['id']));
         }
 
         $location->setCreatedAt((new \DateTime())->getTimestamp());
         $location->setUpdatedAt((new \DateTime())->getTimestamp());
 
-        $em->persist($location);
-        $em->flush();
-
-        //add all users to location
-        if (!empty($jsonApi['data']['relationships']['user'])) {
-            foreach ($json['data']['relationships']['user']['data']['id'] as $id) {
-                $location->setUser($em->getRepository('App:User')->findOneById($id));
+        // add all products to location
+        if (!empty($json['data']['relationships']['products'])) {
+            foreach ($json['data']['relationships']['products']['data'] as $product) {
+                $location->setProduct($em->getRepository('App:Product')->findOneById($product['id']));
             }
         }
+
+        // add all users to location
+        if (!empty($json['data']['relationships']['users'])) {
+            foreach ($json['data']['relationships']['users']['data'] as $user) {
+                $location->setUser($em->getRepository('App:User')->findOneById($user['id']));
+            }
+        }
+
+        $em->persist($merchant);
+        $em->persist($location);
+        $em->flush();
 
         return $location;
     }

@@ -22,11 +22,14 @@ class LoadActivityData extends AbstractFixture implements OrderedFixtureInterfac
         foreach ($this->getProducts() as $data) {
             $activity = new Activity();
             $activity->setName($data['name']);
+            $activity->setType($data['type']);
+            if (isset($data['parent_activity_id'])) {
+                $activity->setParentActivity($manager->getRepository('App:Activity')->findOneById($data['parent_activity_id']));
+            }
 
             $manager->persist($activity);
+            $manager->flush();
         }
-
-        $manager->flush();
     }
 
     /**
@@ -45,18 +48,33 @@ class LoadActivityData extends AbstractFixture implements OrderedFixtureInterfac
         return [
             [
                 'name' => 'Restaurant',
+                'type' => 'main',
             ],
             [
                 'name' => 'Grocery',
+                'type' => 'main',
             ],
             [
                 'name' => 'Pizzeria',
+                'type' => 'main',
             ],
             [
                 'name' => 'Sandwhich shop',
+                'type' => 'main',
             ],
             [
                 'name' => 'Tacos street restaurant',
+                'type' => 'main',
+            ],
+            [
+                'name' => 'fruit de mere',
+                'type' => 'sub',
+                'parent_activity_id' => 1,
+            ],
+            [
+                'name' => 'homar',
+                'type' => 'sub',
+                'parent_activity_id' => 6,
             ],
         ];
     }

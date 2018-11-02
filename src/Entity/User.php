@@ -304,7 +304,7 @@ class User
      *
      * @return $this
      */
-    public function setLocation($location)
+    public function setLocation(Location $location)
     {
         $this->locations[] = $location;
 

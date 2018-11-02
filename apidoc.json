@@ -261,6 +261,36 @@
                 }
             }
         },
+        "/banks": {
+            "get": {
+                "summary": "Get all banks.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated bank collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Bank"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/cards": {
             "get": {
                 "summary": "Get all cards.",
@@ -455,6 +485,36 @@
                 }
             }
         },
+        "/devices": {
+            "get": {
+                "summary": "Get all devices.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated device collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Device"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/invoices": {
             "get": {
                 "summary": "Get all invoices.",
@@ -591,6 +651,36 @@
                     },
                     "404": {
                         "description": "POS not found"
+                    }
+                }
+            }
+        },
+        "/languages": {
+            "get": {
+                "summary": "Get all languages.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated language collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Language"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
                     }
                 }
             }
@@ -1565,6 +1655,33 @@
         },
         "Activity": {
             "required": [
+                "name",
+                "type"
+            ],
+            "properties": {
+                "subActivities": {
+                    "items": {
+                        "$ref": "#/definitions/Activity"
+                    },
+                    "type": "array"
+                },
+                "parentActivity": {
+                    "$ref": "#/definitions/Activity"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Bank": {
+            "required": [
                 "name"
             ],
             "properties": {
@@ -1573,6 +1690,12 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1753,6 +1876,26 @@
             },
             "type": "object"
         },
+        "Device": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Invoice": {
             "required": [
                 "issueDate",
@@ -1833,6 +1976,30 @@
             },
             "type": "object"
         },
+        "Language": {
+            "required": [
+                "name",
+                "iso"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "iso": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Location": {
             "required": [
                 "name",
@@ -1853,13 +2020,13 @@
                 "address": {
                     "type": "string"
                 },
-                "postalCode": {
+                "postal_code": {
                     "type": "string"
                 },
                 "locality": {
                     "type": "string"
                 },
-                "houseNumber": {
+                "house_number": {
                     "type": "string"
                 },
                 "website": {
@@ -1885,6 +2052,15 @@
                 },
                 "wifi": {
                     "type": "boolean"
+                },
+                "products": {
+                    "items": {
+                        "$ref": "#/definitions/Product"
+                    },
+                    "type": "array"
+                },
+                "product": {
+                    "$ref": "#/definitions/Product"
                 },
                 "users": {
                     "items": {
@@ -1929,12 +2105,12 @@
             "required": [
                 "name",
                 "address",
-                "postalCode",
+                "postal_code",
                 "locality",
-                "houseNumber",
+                "house_number",
                 "website",
                 "email",
-                "phoneNumber"
+                "phone_number"
             ],
             "properties": {
                 "name": {
@@ -1958,10 +2134,10 @@
                 "email": {
                     "type": "string"
                 },
-                "phoneNumber": {
+                "phone_number": {
                     "type": "string"
                 },
-                "phoneNumberBis": {
+                "phone_number_bis": {
                     "type": "string"
                 },
                 "wifi": {
@@ -2032,6 +2208,9 @@
                 },
                 "contract": {
                     "$ref": "#/definitions/Contract"
+                },
+                "onboarding": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2138,6 +2317,15 @@
                 },
                 "transaction": {
                     "$ref": "#/definitions/InvoiceTransaction"
+                },
+                "locations": {
+                    "items": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "type": "array"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
                 }
             },
             "type": "object"
@@ -2352,46 +2540,6 @@
                     "type": "integer"
                 },
                 "deletedAt": {
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "Bank": {
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "integer"
-                },
-                "updatedAt": {
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "Device": {
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "integer"
-                },
-                "updatedAt": {
                     "type": "integer"
                 }
             },

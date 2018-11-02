@@ -21,13 +21,13 @@ class LocationType extends AbstractType
         $builder
             ->add('name', TextType::class, ['required' => true])
             ->add('address', TextType::class, ['required' => true])
-            ->add('postalCode', TextType::class, ['required' => true])
+            ->add('postal_code', TextType::class, ['required' => true])
             ->add('locality', TextType::class, ['required' => true])
-            ->add('houseNumber', TextType::class, ['required' => true])
+            ->add('house_number', TextType::class, ['required' => true])
             ->add('website', TextType::class, ['required' => true])
             ->add('email', TextType::class, ['required' => true])
-            ->add('phoneNumber', TextType::class, ['required' => true])
-            ->add('phoneNumberBis', TextType::class, ['required' => false])
+            ->add('phone_number', TextType::class, ['required' => true])
+            ->add('phone_number_bis', TextType::class, ['required' => false])
             ->add('wifi', CheckboxType::class, ['required' => false]);
     }
 
