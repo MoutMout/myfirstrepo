@@ -66,7 +66,7 @@ class ContractDetails
     private $createdAt;
 
     /**
-     * @ORM\Column(name="updated_at", type="integer")
+     * @ORM\Column(name="updated_at", type="integer", nullable=true)
      *
      * @Exposable
      */
