@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class PosController.
  *
- * @Route("/pos")
+ * @Route("/poss")
  */
 class PosController extends Controller
 {
