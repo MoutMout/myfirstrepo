@@ -987,7 +987,7 @@
                 }
             }
         },
-        "/pos": {
+        "/poss": {
             "get": {
                 "summary": "Get all POS.",
                 "responses": {
@@ -1112,7 +1112,7 @@
                 }
             }
         },
-        "/pos/{id}": {
+        "/poss/{id}": {
             "get": {
                 "summary": "Get a POS.",
                 "parameters": [
