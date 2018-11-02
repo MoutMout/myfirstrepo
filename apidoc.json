@@ -137,6 +137,36 @@
                 }
             }
         },
+        "/banks": {
+            "get": {
+                "summary": "Get all banks.",
+                "responses": {
+                    "200": {
+                        "description": "Paginated bank collection",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "$ref": "#/definitions/Bank"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/candidates": {
             "get": {
                 "summary": "Get all candidates.",
@@ -257,36 +287,6 @@
                     },
                     "404": {
                         "description": "Candidate not found"
-                    }
-                }
-            }
-        },
-        "/banks": {
-            "get": {
-                "summary": "Get all banks.",
-                "responses": {
-                    "200": {
-                        "description": "Paginated bank collection",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "items": {
-                                        "properties": {
-                                            "id": {
-                                                "type": "string"
-                                            },
-                                            "type": {
-                                                "type": "string"
-                                            },
-                                            "attributes": {
-                                                "$ref": "#/definitions/Bank"
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
                     }
                 }
             }
@@ -2020,13 +2020,13 @@
                 "address": {
                     "type": "string"
                 },
-                "postal_code": {
+                "postalCode": {
                     "type": "string"
                 },
                 "locality": {
                     "type": "string"
                 },
-                "house_number": {
+                "houseNumber": {
                     "type": "string"
                 },
                 "website": {
@@ -2119,13 +2119,13 @@
                 "address": {
                     "type": "string"
                 },
-                "postalCode": {
+                "postal_code": {
                     "type": "string"
                 },
                 "locality": {
                     "type": "string"
                 },
-                "houseNumber": {
+                "house_number": {
                     "type": "string"
                 },
                 "website": {
