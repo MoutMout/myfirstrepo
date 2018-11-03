@@ -44,12 +44,27 @@ class LoadDeviceData extends AbstractFixture implements OrderedFixtureInterface
     {
         return [
             [
-                'name' => 'DEVICE 1',
+                "name" => "Mobile Point-of-Sale",
                 'created_at' => 20181011,
                 'updated_at' => 20181014,
             ],
             [
-                'name' => 'DEVICE 2',
+                "name" => "Tablet POS",
+                'created_at' => 20181011,
+                'updated_at' => 20181014,
+            ],
+            [
+                "name" => "Terminal POS",
+                'created_at' => 20181011,
+                'updated_at' => 20181014,
+            ],
+            [
+                "name" => "Online Point-of-Sale",
+                'created_at' => 20181011,
+                'updated_at' => 20181014,
+            ],
+            [
+                "name" => "Self-Service Kiosk POS",
                 'created_at' => 20181011,
                 'updated_at' => 20181014,
             ],

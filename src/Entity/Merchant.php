@@ -28,6 +28,15 @@ class Merchant
     private $id;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", options={"default": true})
+     *
+     * @Exposable
+     */
+    private $onboarding = true;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="companyId", type="string")
@@ -90,7 +99,7 @@ class Merchant
     private $createdAt;
 
     /**
-     * @ORM\Column(name="updated_at", type="integer")
+     * @ORM\Column(name="updated_at", type="integer", nullable=true)
      *
      * @Exposable
      */
@@ -405,5 +414,21 @@ class Merchant
     public function setContract(Contract $contract): void
     {
         $this->contract = $contract;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getOnboarding(): bool
+    {
+        return $this->onboarding;
+    }
+
+    /**
+     * @param bool $onboarding
+     */
+    public function setOnboarding(bool $onboarding): void
+    {
+        $this->onboarding = $onboarding;
     }
 }

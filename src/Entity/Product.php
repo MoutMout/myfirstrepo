@@ -68,7 +68,7 @@ class Product
     private $createdAt;
 
     /**
-     * @ORM\Column(name="updated_at", type="integer")
+     * @ORM\Column(name="updated_at", type="integer", nullable=true)
      *
      * @Exposable
      */
@@ -94,6 +94,14 @@ class Product
      * @Embeddable()
      */
     private $transactions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Location", inversedBy="users")
+     * @ORM\JoinTable(name="products_locations")
+     *
+     * @Embeddable()
+     */
+    private $locations = [];
 
     /**
      * @return int
@@ -239,6 +247,26 @@ class Product
     public function setTransaction(InvoiceTransaction $transaction): self
     {
         $this->transactions[] = $transaction;
+
+        return $this;
+    }
+
+    /**
+     * @return Location[]
+     */
+    public function getLocations()
+    {
+        return $this->locations;
+    }
+
+    /**
+     * @param Location $location
+     *
+     * @return $this
+     */
+    public function setLocation(Location $location)
+    {
+        $this->locations[] = $location;
 
         return $this;
     }

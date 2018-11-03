@@ -109,12 +109,18 @@ class UserController extends Controller
      *               @SWG\Property(property="type", type="string"),
      *               @SWG\Property(property="attributes", ref=@Model(type=UserType::class)),
      *                  @SWG\Property(property="relationships",
-         *                  @SWG\Property(property="role",
-         *                      @SWG\Property(property="data",
-         *                      @SWG\Property(property="id", type="string", default="1"),
-         *                      @SWG\Property(property="type", type="string", default="roles")
-         *                  )
-     *                  )
+     *                     @SWG\Property(property="role",
+     *                          @SWG\Property(property="data",
+     *                          @SWG\Property(property="id", type="string", default="1"),
+     *                          @SWG\Property(property="type", type="string", default="roles")
+     *                         ),
+     *                      ),
+     *                     @SWG\Property(property="merchant",
+     *                          @SWG\Property(property="data",
+     *                          @SWG\Property(property="id", type="string", default="1"),
+     *                          @SWG\Property(property="type", type="string", default="merchants")
+     *                         ),
+     *                      )
      *              )
      *            )
      *        )

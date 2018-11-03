@@ -9,11 +9,11 @@ use WizardsRest\Annotation\Type;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="bank")
+ * @ORM\Table(name="language")
  *
- * @Type("banks")
+ * @Type("languages")
  */
-class Bank
+class Language
 {
     /**
      * @var int
@@ -36,6 +36,17 @@ class Bank
      * @Exposable
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="iso", type="string")
+     *
+     * @Assert\NotBlank()
+     *
+     * @Exposable
+     */
+    private $iso;
 
     /**
      * @ORM\Column(name="created_at", type="integer")
@@ -70,7 +81,7 @@ class Bank
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -81,6 +92,22 @@ class Bank
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIso(): string
+    {
+        return $this->iso;
+    }
+
+    /**
+     * @param string $iso
+     */
+    public function setIso(string $iso): void
+    {
+        $this->iso = $iso;
     }
 
     /**

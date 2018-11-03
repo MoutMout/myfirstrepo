@@ -31,7 +31,7 @@ class User
      * @ORM\Column(name="firstname", type="string")
      *
      * @Assert\NotBlank()
-     *
+     *us
      * @Exposable
      */
     private $firstname;
@@ -304,7 +304,7 @@ class User
      *
      * @return $this
      */
-    public function setLocation($location)
+    public function setLocation(Location $location)
     {
         $this->locations[] = $location;
 
