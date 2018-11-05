@@ -26,13 +26,27 @@ class CardSpec extends ObjectBehavior
 
     function it_has_an_userId_setter()
     {
-        $this->setUserId('666')->shouldReturn($this);
+        $this->setUserId('ec53e6502d354e8f9e339f71128eea70')->shouldReturn($this);
     }
 
     function it_has_an_userId()
     {
-        $this->setUserId('666');
-        $this->getUserId()->shouldReturn('666');
+        $this->setUserId('ec53e6502d354e8f9e339f71128eea70');
+        $this->getUserId()->shouldReturn('ec53e6502d354e8f9e339f71128eea70');
+
+        $this->setUserId(null);
+        $this->getUserId()->shouldReturn(null);
+    }
+
+    function it_has_a_cardUid_setter()
+    {
+        $this->setCardUid('128794269173')->shouldReturn($this);
+    }
+
+    function it_has_a_cardUid()
+    {
+        $this->setCardUid('128794269173');
+        $this->getCardUid()->shouldReturn('128794269173');
     }
 
     function it_has_an_type_setter()

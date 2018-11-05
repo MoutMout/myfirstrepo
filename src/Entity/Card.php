@@ -29,13 +29,22 @@ class Card
     /**
      * @var string
      *
-     * @ORM\Column(name="userid", type="string", length=300)
+     * @ORM\Column(name="userId", type="string", nullable=true)
+     *
+     * @Exposable
+     */
+    private $userId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cardUid", type="string")
      *
      * @Assert\NotBlank()
      *
      * @Exposable
      */
-    private $userId;
+    private $cardUid;
 
     /**
      * @var string
@@ -142,9 +151,21 @@ class Card
      *
      * @return $this
      */
-    public function setUserId(string $userId)
+    public function setUserId($userId)
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $cardUid
+     *
+     * @return $this
+     */
+    public function setCardUid($cardUid)
+    {
+        $this->cardUid = $cardUid;
 
         return $this;
     }
@@ -254,11 +275,19 @@ class Card
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardUid()
+    {
+        return $this->cardUid;
     }
 
     /**
@@ -294,7 +323,7 @@ class Card
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getExpireAt()
     {

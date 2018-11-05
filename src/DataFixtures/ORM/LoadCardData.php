@@ -21,6 +21,7 @@ class LoadCardData extends AbstractFixture implements OrderedFixtureInterface
         foreach ($this->getCards() as $data) {
             $card = new Card();
             $card->setUserId($data['userId']);
+            $card->setCardUid($data['cardUid']);
             $card->setType($data['type']);
             $card->setNumbers($data['numbers']);
             $card->setCompany($data['company']);
@@ -52,6 +53,7 @@ class LoadCardData extends AbstractFixture implements OrderedFixtureInterface
         return [
             [
                 'userId' => 'ec53e6502d354e8f9e339f71128eea70', // jean dupont
+                'cardUid' => '128794381378',
                 'type' => 'restaurant',
                 'numbers' => '4489',
                 'company' => 'Sodexo',
@@ -62,7 +64,8 @@ class LoadCardData extends AbstractFixture implements OrderedFixtureInterface
                 'currency' => 'EUR',
             ],
             [
-                'userId' => '2',
+                'userId' => null,
+                'cardUid' => '131109384176',
                 'type' => 'restaurant',
                 'numbers' => '0924',
                 'company' => 'We Digital Garden',

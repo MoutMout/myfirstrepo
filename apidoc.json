@@ -1751,7 +1751,7 @@
         },
         "Card": {
             "required": [
-                "userId",
+                "cardUid",
                 "type",
                 "numbers",
                 "company",
@@ -1766,7 +1766,13 @@
                     "type": "integer"
                 },
                 "userId": {
-                    "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "cardUid": {
+                  "type": "string"
                 },
                 "type": {
                     "type": "string"
@@ -1800,6 +1806,7 @@
         "CardType": {
             "required": [
                 "userId",
+                "cardUid",
                 "type",
                 "numbers",
                 "company",
@@ -1811,6 +1818,9 @@
             ],
             "properties": {
                 "userId": {
+                    "type": "string"
+                },
+                "cardUid": {
                     "type": "string"
                 },
                 "type": {
