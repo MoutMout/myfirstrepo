@@ -1,4 +1,4 @@
-image: 'brs-registry-prd.sodexo.com/sodexo/infra/ci-php'
+image: 'brs-registry-test.sodexo.com/sodexo/infra/ci-php'
 
 stages:
   - test
