@@ -8,7 +8,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 ENV POSTGRES_USER 'USER'
 ENV POSTGRES_PASS 'PASS'
-ENV POSTGRES_HOST 'HOST'
+ENV POSTGRES_HOST 'hist'
 ENV POSTGRES_PORT 'HOST'
 ENV POSTGRES_DB   'DB'
 ENV APP_ENV       'dev'
